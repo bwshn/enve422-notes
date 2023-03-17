@@ -9,7 +9,6 @@ bottom=1in, bindingoffset=0.2in]{geometry}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{hyperref}
 \usepackage{booktabs}
-\usepackage[dvipsnames]{xcolor}
 
 
 \title{{\Large ENVE 422}\\ {\small Treatment \& Disposal of Water \& Wastewater Sludge}}
@@ -21,7 +20,7 @@ bottom=1in, bindingoffset=0.2in]{geometry}
 \tableofcontents
 \pagebreak
 \date{\begin{flushright}March 10, 2023\end{flushright}}
-\section{Syllabus}
+\section*{Syllabus}
 \subsection{Introduction}
 
 General premise: Provides general information on how general sludge is handled.
@@ -46,10 +45,16 @@ Total = 105\%
 
 Comment from the instructor: It is a hard course.
 
-\date{\begin{flushright}March 17 (before class), 2023\end{flushright}}
+\date{\begin{flushright}March 17, 2023\end{flushright}}
 \section{What is Sludge?}
+How to use Sludge?
+\begin{enumerate}
+    \item Fertilizer
+    Stabilization $\rightarrow$ reducing the microbial activity.
+    \item Incineration $\rightarrow$ it has some calorific value, drying is a must.\\
+    Brown coal, lignite (which is found in Turkey). Almost same in terms of calorific value.
+\end{enumerate}
 \subsection{Sludge Quantification}
-
 Semi-solid material produced by water and wastewater treatment that itself needs further treatment for disposal into the environment.
 \begin{itemize}
     \item High organic content
@@ -95,12 +100,13 @@ Sources:
         \end{enumerate}
     \item Water treatment (Totally different)\\
     Water treatment $\rightarrow$ settling tank (major source)\\
-    Not called digester, \textbf{Thickener}, then dewatering.
+    Not called digester, \textbf{Thickener}, then dewatering.\\
+    Water treatment sludge (different from wastewater), affected by added coagulant and the quality of the water.\\
+    Digestion  refers to the organic removing (for biomass).\\
+    Thickening refers to squeezing the water.
     \item Industrial Sludge $\rightarrow$ hazardous waste (not included)
     \end{enumerate}
 \end{itemize}
-
-
 
 \begin{table}[h]
     \caption{The types of sludge, their physical concentrations and characteristics.}
@@ -125,10 +131,9 @@ Sodium, calcium iron are some inorganic content in the sludge.\\
 Microorganisms: Viruses, fecal coliforms, salmonella...\\
 Before and after $\rightarrow$ they are still there after the treatment.
 
-\textbf{Quantities:}
-\[S_0 \rightarrow incoming\,BOD\]
-\[X_0 \rightarrow incoming\,solids\]
-
+\textbf{Quantities\footnote{A question in homework and quiz}:}
+\[S_0 \rightarrow incoming\,BOD\,(mass/time)\]
+\[X_0 \rightarrow incoming\,solids\,(mass/time)\]
 Those are loads.\\
 From primary, kX\textsubscript{0} to digester / up to 0.6 for k, good number if close to this.\\
 hS\textsubscript{0} and (1-k)X\textsubscript{0} / h is 0.7 min, means 30\% removed with primary clarifier, since we are not removing BOD in the primary clarifier, it is expected.\\
@@ -141,19 +146,19 @@ $\Delta$X is net solids produced by biological action.\\
 Y (Yield) $\Delta$X/$\Delta$S\\
 $\Delta$S = hS\textsubscript{0}-ihS\textsubscript{0}\\
 Y = 0.5 for activated sludge;\\
-Y = 0.2 for trickling filters, because it is biofilm.\\
+Y = 0.2 for trickling filters, because it is biofilm.
 \subsection{Sludge Characteristics}
 Caused due to differences in the type and quality of wastewater and differences in the wastewater treatment processes and operations.\\
-General sludge characteristics by typical parameters can be explained.\\
+General sludge characteristics by typical parameters can be explained (even though it is time dependent).\\
 \textbf{Physical characteristics:}
 \begin{enumerate}
     \item Specific gravity\\
     Def: Ratio of  weight of the material to the weight of an equal volume of water.\\
     1L sludge weighing 1010g / 1000g water = 1.01 is the specific gravity.\\
     Most sludge have specific gravity of 1.0, almost equal to the weight of water, what might be the problem?\\
-    \textcolor{red}{Shows similar behavior with gravity, physical separation might be hard.}\\ % check the answer
-    Sludge is suspension, solid and liquid and more than one solid (volatile and fixed components exist).\\
-    1/S = total wi/si % formulate this part
+    \textbf{Shows similar behavior as water with gravity, physical separation is hard.}\\
+    Sludge is suspension, solid and liquid and more than one solid (volatile and fixed components exist).
+    \[\frac{1}{S}= \sum_{i=1}^{n} \frac{W_i}{S_i}\]
     \item Sludge density\\
     Again, very close to 1 (1.0... in examples).
     \item Solid concentration\\ % tree make for figure 5
@@ -164,10 +169,11 @@ General sludge characteristics by typical parameters can be explained.\\
     \item Settling characteristics\\
     How well it settles.
     \begin{itemize}
-        \item Zone Settling Velocity (ZSV)\\
-        ZSV is in inverse relationship with concentration and hyperbolic.\\ % write this part with formulation
+        \item Zone Settling Velocity\footnote{Hindered settling test} (ZSV)\\
+        ZSV is in hyperbolically inverse relationship with concentration.
+        \[ZSV = k * \frac{1}{C}\]
         Why is there such a relationship?\\
-        \textcolor{red}{Higher concentration compresses in more time, the particles creates interference.}\\ % check the answer
+        \textbf{Higher concentration compresses in more time, the already settled particles creates interference.}\\
         Why do we care settling in second?
         \begin{enumerate}
             \item if not good settling, the return sludge will be low.\\
@@ -176,15 +182,16 @@ General sludge characteristics by typical parameters can be explained.\\
         \end{enumerate}
         \item Sludge Volume Index (SVI)\\
         Quick test.\\
-        1L cylinder for 30 min.\\
-        SVI = V\textsubscript{30} * 1000 / MLSS\\ % can be formulated
+        1L cylinder for 30 min.
+        \[SVI = V_{30} * \frac{1000}{MLSS}\]
         An operational tool designed for the  treatment, more about settleability to gain an idea but not a good research too.\\
         SVI < 120 $\rightarrow$ well settling.\\
         120 < SVI < 150 $\rightarrow$ bulking occurs.\\
         150 < SVI $\rightarrow$ severely bulking, requires action.
         \item Particle size\\
-        Cannot be defined by a single size / a distribution must be mentioned.
+        Micro level, cannot be defined by a single size / a distribution must be mentioned.
         Many dynamic affect the distribution.\\
+        Viscosity, settling, dewatering are affected.\\
         Measurement is hard.
         \begin{enumerate}
             \item Filtration, thorough a series of different sized filters.
@@ -197,29 +204,15 @@ General sludge characteristics by typical parameters can be explained.\\
         \begin{enumerate}
             \item microorganisms
             \item extracellular polymers
-            \item water\\
-            Extracellular polymers (EPS) hold individual micoroorgganisms $\rightarrow$ flocs causes separation an settling.\\
-            Filamentous organisms give strength to the structure.\\
-            EPS is a major component, creates a structure with water channels, gaps, reservoirs.\\
-            It has pores: porosity.\\
-            Activated sludge: 0.999
+            \item water
         \end{enumerate}
     \end{itemize}
 \end{enumerate}
-
-\date{\begin{flushright}March 17, 2023\end{flushright}}
-How to use Sludge?
-\begin{enumerate}
-    \item Fertilizer
-    Stabilization $\rightarrow$ reducing the microbial activity.
-    \item Incineration $\rightarrow$ it has some calorific value, drying is a must.\\
-    Brown coal, lignite (which is found in Turkey). Almost same in terms of calorific value.
-\end{enumerate}
-
-Water treatment sludge (different from wastewater), affected by added coagulant and the quality of the water.\\
-Digestion  refers to the organic removing (for biomass).\\
-Thickening refers to squeezing the water.
-
+Extracellular polymers (EPS) hold individual microorganisms $\rightarrow$ flocs causes separation an settling.\\
+Filamentous organisms give strength to the structure.\\
+EPS is a major component, creates a structure with water channels, gaps, reservoirs.\\
+It has pores: porosity.\\
+Activated sludge: 0.999
 
 
 \end{document}

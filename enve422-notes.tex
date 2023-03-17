@@ -4,10 +4,14 @@ bottom=1in, bindingoffset=0.2in]{geometry}
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
 \usepackage{microtype}
-\usepackage[english]{babel}
+\usepackage[american]{babel}
 \usepackage{parskip}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}
+
+
 \title{{\Large ENVE 422}\\ {\small Treatment \& Disposal of Water \& Wastewater Sludge}}
 \author{Bekir Şahin}
 \date{2023}
@@ -42,7 +46,180 @@ Total = 105\%
 
 Comment from the instructor: It is a hard course.
 
+\date{\begin{flushright}March 17 (before class), 2023\end{flushright}}
+\section{What is Sludge?}
+\subsection{Sludge Quantification}
+
+Semi-solid material produced by water and wastewater treatment that itself needs further treatment for disposal into the environment.
+\begin{itemize}
+    \item High organic content
+    \item Nutrients
+    \item Pathogenic microorganisms
+    \item Lots of water
+\end{itemize}
+Typical sludge generation\footnote{Calculated using census data and sludge production data}: 0.025-0.095 kg/capita/day\\
+In Turkey: 0.035 kg/capita/day\\
+Numbers depends on:
+\begin{itemize}
+    \item Wastewater characteristics
+    \item Treatment types in the system
+    \item Sludge treatment units
+\end{itemize}
+Although, the temperature, the climate, etc. are parameters, those three are the most affecting ones.\\
+Sources:
+\begin{itemize}
+    \item Wastewater treatment:\begin{enumerate}
+        \item Primary\\
+        Primary treatment $\rightarrow$ For settleable solids with some intention of BOD\\
+        Screens, disposed in landfills, no more treatment\\
+        Primary treatment (called raw primary sludge)\begin{itemize}
+            \item Odor
+            \item Organics
+            \item Water content\\
+            Therefore, it should be treated.\\
+            Typical treatment: anaerobic digesters, dewatering.\\
+            Digesters do further treatment, then dewatering process comes along.\\
+            Then, it can be used for beneficially.\\
+            Anaerobic digesters do:\begin{enumerate}
+                \item Organic content reduction
+                \item Objectionable odor removal
+                \item reduces the pathogens
+            \end{enumerate}
+        \end{itemize}
+        \item Secondary\\
+        Secondary treatment $\rightarrow$ removing BOD\\
+        In advanced systems we don't have primary clarifier, final clarifier, returned activated sludge.\begin{enumerate}
+            \item Return activated sludge: coming from final clarifier.
+            \item Waste activated sludge: rest of the microbial flocs is removed from the system.\\
+            To digester (with raw primary sludge *almost 50/50 to be stabilized*)
+        \end{enumerate}
+    \item Water treatment (Totally different)\\
+    Water treatment $\rightarrow$ settling tank (major source)\\
+    Not called digester, \textbf{Thickener}, then dewatering.
+    \item Industrial Sludge $\rightarrow$ hazardous waste (not included)
+    \end{enumerate}
+\end{itemize}
+
+
+
+\begin{table}[h]
+    \caption{The types of sludge, their physical concentrations and characteristics.}
+    \label{tab:table_1}
+    \centering
+    \begin{tabular}{p{0.3\linewidth}rp{0.4\linewidth}}
+        \toprule
+        Sludge & Conc. (\%) & Characteristics \\
+        \midrule
+        Raw primary & 4-8\footnote{It is a huge number, very concentrated.} & not drained well on drying beds \newline dewatered mechanically\\
+        Anaerobic primary digested & 6-10 & gas production, well on drying beds\\
+        Wasted activated sludge & 0.5-1.5 & no odor, bio. active\\
+        Mixed digested & 2-4 & produces gas, not as easy to dewater\\
+        Aerobic digested & 1-3 & bio. active, not as easy to dewater\\
+        Waste alum & 0.5-1.5 & not active, inorganic content\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Nitrogen, ammonia, nitrate, phosphorus, potassium $\rightarrow$ important for fertilizer.\\
+Sodium, calcium iron are some inorganic content in the sludge.\\
+Microorganisms: Viruses, fecal coliforms, salmonella...\\
+Before and after $\rightarrow$ they are still there after the treatment.
+
+\textbf{Quantities:}
+\[S_0 \rightarrow incoming\,BOD\]
+\[X_0 \rightarrow incoming\,solids\]
+
+Those are loads.\\
+From primary, kX\textsubscript{0} to digester / up to 0.6 for k, good number if close to this.\\
+hS\textsubscript{0} and (1-k)X\textsubscript{0} / h is 0.7 min, means 30\% removed with primary clarifier, since we are not removing BOD in the primary clarifier, it is expected.\\
+After final clarifier:\\
+ihS\textsubscript{0} / so i has to be really small (0.1, means 90\% removal) and X\textsubscript{f} after the removal.\\
+Incoming to digesters:\\
+1st: kX\textsubscript{0} came, as primary only jkX\textsubscript{0}, j = 0.8 means 20\% removal achieved for primary only.\\
+2nd: (1-k)X\textsubscript{0}-X\textsubscript{f} + $\Delta$X\\
+$\Delta$X is net solids produced by biological action.\\
+Y (Yield) $\Delta$X/$\Delta$S\\
+$\Delta$S = hS\textsubscript{0}-ihS\textsubscript{0}\\
+Y = 0.5 for activated sludge;\\
+Y = 0.2 for trickling filters, because it is biofilm.\\
+\subsection{Sludge Characteristics}
+Caused due to differences in the type and quality of wastewater and differences in the wastewater treatment processes and operations.\\
+General sludge characteristics by typical parameters can be explained.\\
+\textbf{Physical characteristics:}
+\begin{enumerate}
+    \item Specific gravity\\
+    Def: Ratio of  weight of the material to the weight of an equal volume of water.\\
+    1L sludge weighing 1010g / 1000g water = 1.01 is the specific gravity.\\
+    Most sludge have specific gravity of 1.0, almost equal to the weight of water, what might be the problem?\\
+    \textcolor{red}{Shows similar behavior with gravity, physical separation might be hard.}\\ % check the answer
+    Sludge is suspension, solid and liquid and more than one solid (volatile and fixed components exist).\\
+    1/S = total wi/si % formulate this part
+    \item Sludge density\\
+    Again, very close to 1 (1.0... in examples).
+    \item Solid concentration\\ % tree make for figure 5
+    mg/L or \% solids\\
+    if we assume the specific gravity of the slurry is 1.0,\\
+    10,000 mg/L = 1\%\\
+    For sludge with higher S values, the relationship will change.
+    \item Settling characteristics\\
+    How well it settles.
+    \begin{itemize}
+        \item Zone Settling Velocity (ZSV)\\
+        ZSV is in inverse relationship with concentration and hyperbolic.\\ % write this part with formulation
+        Why is there such a relationship?\\
+        \textcolor{red}{Higher concentration compresses in more time, the particles creates interference.}\\ % check the answer
+        Why do we care settling in second?
+        \begin{enumerate}
+            \item if not good settling, the return sludge will be low.\\
+            return sludge $\rightarrow$ maintaining a good solid content, good MLSS results in good removal.
+            \item if not settle, we lose them to effluent, all the work we did is gonna be wasted.
+        \end{enumerate}
+        \item Sludge Volume Index (SVI)\\
+        Quick test.\\
+        1L cylinder for 30 min.\\
+        SVI = V\textsubscript{30} * 1000 / MLSS\\ % can be formulated
+        An operational tool designed for the  treatment, more about settleability to gain an idea but not a good research too.\\
+        SVI < 120 $\rightarrow$ well settling.\\
+        120 < SVI < 150 $\rightarrow$ bulking occurs.\\
+        150 < SVI $\rightarrow$ severely bulking, requires action.
+        \item Particle size\\
+        Cannot be defined by a single size / a distribution must be mentioned.
+        Many dynamic affect the distribution.\\
+        Measurement is hard.
+        \begin{enumerate}
+            \item Filtration, thorough a series of different sized filters.
+            \item Photographic techniques.
+            \item Scattering laser light.\\
+            Even you measure, dewatering settling rheology is still complicated.
+        \end{enumerate}
+        \item Floc structure and porosity\\
+        Flocs formed from three major components:
+        \begin{enumerate}
+            \item microorganisms
+            \item extracellular polymers
+            \item water\\
+            Extracellular polymers (EPS) hold individual micoroorgganisms $\rightarrow$ flocs causes separation an settling.\\
+            Filamentous organisms give strength to the structure.\\
+            EPS is a major component, creates a structure with water channels, gaps, reservoirs.\\
+            It has pores: porosity.\\
+            Activated sludge: 0.999
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
 \date{\begin{flushright}March 17, 2023\end{flushright}}
-\section{Quantification}
+How to use Sludge?
+\begin{enumerate}
+    \item Fertilizer
+    Stabilization $\rightarrow$ reducing the microbial activity.
+    \item Incineration $\rightarrow$ it has some calorific value, drying is a must.\\
+    Brown coal, lignite (which is found in Turkey). Almost same in terms of calorific value.
+\end{enumerate}
+
+Water treatment sludge (different from wastewater), affected by added coagulant and the quality of the water.\\
+Digestion  refers to the organic removing (for biomass).\\
+Thickening refers to squeezing the water.
+
+
 
 \end{document}

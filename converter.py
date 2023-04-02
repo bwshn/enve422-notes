@@ -1,6 +1,4 @@
-# TODO: the number outputs should be checked.
 import math
-
 
 def gcd(a, b):
     if b == 0:
@@ -14,7 +12,7 @@ def solid():
     val = float(input("Enter solid (%) content: "))
     s_gravity = float(input("Enter specific gravity: "))
     mgL = val*s_gravity*10**6/100.0
-    print("\n{0:.0f} mg/L\n{1:.0f}‰ || {2:.0f} ppm || {3:.0f} ppb\n".format(mgL,
+    print("\n{0:.0f} mg/L\n{1:.2f}‰ || {2:.0f} ppm || {3:.0f} ppb\n".format(mgL,
           val * 10.0, val * 10000.0, val * 10000000.0))
 
 
@@ -23,7 +21,7 @@ def mg_L():
     mgL = float(input("Enter mg/L: "))
     s_gravity = float(input("Enter specific gravity: "))
     val = mgL*100.0/(s_gravity*10**6)
-    print("\n{0:.0f}% || {1:.0f}‰ || {2:.0f} ppm || {3:.0f} ppb\n".format(
+    print("\n{0:.2f}% || {1:.2f}‰ || {2:.0f} ppm || {3:.0f} ppb\n".format(
         val, val * 10.0, val * 10000.0, val * 10000000.0))
 
 

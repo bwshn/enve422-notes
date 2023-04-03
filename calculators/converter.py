@@ -1,5 +1,6 @@
 import math
 
+
 def gcd(a, b):
     if b == 0:
         return a
@@ -70,20 +71,22 @@ def initial_and_final():
           gcd_val/(denominator/gcd_val - numerator/gcd_val)))
 
 
-while (1):
+ans = True
+while (ans):
     print("1. Solid % to mg/L || 2. mg/L to Solid %")
     print("3. Log removal to % || 4. Removal % to log || 5. Initial and final to log and %")
-    fun = int(
-        input("What conversion do you want to use? (Enter an appropriate number)\n"))
-    if fun == 1:
+    fun = input("What conversion do you want to use? (Enter an appropriate number)\n")
+    if fun == "1":
         solid()
-    elif fun == 2:
+    elif fun == "2":
         mg_L()
-    elif fun == 3:
+    elif fun == "3":
         log_to_percent()
-    elif fun == 4:
+    elif fun == "4":
         percent_to_log()
-    elif fun == 5:
+    elif fun == "5":
         initial_and_final()
     else:
+        ans = False
         print("Invalid input!")
+        input("Press Enter to leave...")

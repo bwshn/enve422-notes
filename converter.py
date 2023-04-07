@@ -56,8 +56,8 @@ def percent_to_log():
 
 def initial_and_final():
     """Converts initial and final values into log and percent removal"""
-    initial = int(input("Enter the initial value: "))
-    final = int(input("Enter the final value: "))
+    initial = int(float(input("Enter the initial value: ")))
+    final = int(float(input("Enter the final value: ")))
     removed = initial - final
     percent_removal = (removed / initial) * 100
     log_removal = math.log10(100.0 / (100.0-percent_removal))
@@ -75,7 +75,8 @@ ans = True
 while (ans):
     print("1. Solid % to mg/L || 2. mg/L to Solid %")
     print("3. Log removal to % || 4. Removal % to log || 5. Initial and final to log and %")
-    fun = input("What conversion do you want to use? (Enter an appropriate number)\n")
+    fun = input(
+        "What conversion do you want to use? (Enter an appropriate number)\n")
     if fun == "1":
         solid()
     elif fun == "2":

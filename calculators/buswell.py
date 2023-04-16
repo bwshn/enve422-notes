@@ -1,35 +1,27 @@
+import re
+
+
 def count_elements(formula):
+    """Written in ChatGPT to count all the elements of a simply expresses molecule"""
+    # Define a regular expression pattern to match elements and their counts
+    pattern = r'([A-Z][a-z]*)(\d*)'
+
     # Initialize a dictionary to store the element counts
     element_counts = {}
-    
-    # Loop through the characters in the formula
-    i = 0
-    while i < len(formula):
-        # If the character is an uppercase letter, it starts a new element
-        if formula[i].isupper():
-            element = formula[i]
-            count = 1
-            
-            # Check if there is a lowercase letter following the uppercase letter
-            if i+1 < len(formula) and formula[i+1].islower():
-                element += formula[i+1]
-                i += 1
-                
-            # Check if there is a number following the element
-            if i+1 < len(formula) and formula[i+1].isdigit():
-                count = int(formula[i+1])
-                i += 1
-                
-            # Add the element and count to the dictionary
-            if element in element_counts:
-                element_counts[element] += count
-            else:
-                element_counts[element] = count
-        
-        # Move on to the next character
-        i += 1
-    
-    # Return the dictionary of element counts
+
+    # Use re.findall() to find all matches of the pattern in the formula
+    matches = re.findall(pattern, formula)
+
+    # Iterate over the matches and update the element counts
+    for match in matches:
+        element = match[0]
+        count = match[1] if match[1] else '1'
+        if element in element_counts:
+            element_counts[element] += int(count)
+        else:
+            element_counts[element] = int(count)
+
+    # Return the element counts
     return element_counts
 
 
@@ -51,4 +43,5 @@ def modified_Buswell(formula):
 
 while (1):
     formula = input("Enter the chemical formula: ")
+    print(count_elements(formula))
     modified_Buswell(formula)

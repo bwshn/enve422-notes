@@ -1,0 +1,156 @@
+\documentclass[a4paper]{article}
+
+% Packages
+\usepackage{amsmath} % For math symbols and equations
+\usepackage{amssymb} % For math symbols
+\usepackage{enumerate} % For custom numbering of lists
+\usepackage[
+  inner=2.5cm, % Set inner margin to 2.5 cm
+  outer=2cm, % Set outer margin to 2 cm
+  bindingoffset=0.5cm, % Set binding offset to 0.5 cm
+  top=2cm, % Set top margin to 2 cm
+  bottom=2cm % Set bottom margin to 2 cm
+]{geometry}
+\usepackage{fancyhdr} % For custom headers and footers
+\usepackage{lastpage} % For referencing the last page number
+\usepackage{titlesec} % For custom section and subsection headings
+\usepackage[version=4]{mhchem} % Required package for chemical equations
+\usepackage{hyperref}
+\usepackage[
+backend=biber,
+sorting=anyvt,
+style = nature
+]{biblatex} % for using references
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\addbibresource{hw1refs.bib}
+
+% Page setup
+\pagestyle{fancy} % Set page style to fancy
+\fancyhf{} % Clear default headers and footers
+\lhead{Bekir Şahin} % Set left header to your name
+\rhead{ENVE422 - Homework 1} % Set right header to assignment name
+\rfoot{Page \thepage\ of \pageref{LastPage}} % Set footer to page number
+
+% Section and subsection setup
+\titleformat{\section}{\large\bfseries}{Question \thesection}{1em}{} % Set section format
+\titleformat{\subsection}{\bfseries}{Part \thesubsection}{1em}{} % Set subsection format
+\titlespacing{\section}{0pt}{0.25\baselineskip}{0.25\baselineskip} % Adjust spacing before and after section
+\titlespacing{\subsection}{0pt}{0.25\baselineskip}{0.25\baselineskip} % Adjust spacing before and after subsection
+
+% Document information
+\title{Department of Environmental Engineering\\Middle East Technical University\\Spring 2023\\ENVE422\\Treatment and Disposal of Water \& Wastewater Sludges\\Homework 1 Submission} % Set document title
+\author{\href{sahin.bekir@metu.edu.tr}{Bekir Şahin}} % Set document author
+\begin{document}
+\setcounter{page}{0}
+\onehalfspacing
+\maketitle % Add title to document
+\thispagestyle{empty}
+\newpage
+\section{} % Start a new problem
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{SludgeQuantities.png}
+    \caption{Flow chart of a sludge generation in a conventional wastewater treatment plant.}
+    \label{fig:SludgeQuantities}
+\end{figure}
+\begin{minipage}[c]{0.5\textwidth}
+In the question, the flow rate has been given as 100,000 m$^3$/d, and it is a conventional (primary-activated sludge) wastewater treatment system with an anaerobic digester for the sludge treatment. The flow chart scheme for the requested treatment plan has been shown in Figure \ref{fig:SludgeQuantities}. I picked BOD and SS values based on generic values for municipal wastewater characteristics\autocite{sanin2011,vesilind1988,metcalf2014}.
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\fbox{\parbox{0.95\textwidth}{\textbf{Assumptions}\\Typical domestic wastewater incoming\\Well operated activated sludge process\\Negligible return sludge\\BOD = 250 mg/L | SS = 200 mg/L\\k = 0.6 | h = 0.7 | i = 0.1\\j = 0.8 (no supernatant withdrawal)}}
+\end{minipage}
+\begin{equation}
+\label{eq:conversion}
+    \text{mg/L} * 10^{-3} = \text{kg/m}^3
+\end{equation}
+The conversions are processed as follows according to the Equation \ref{eq:conversion}:\\
+$250 \text{ mg/L}*10^{-3}=0.25 \text{ kg/m}^3$\hfill \textbf{BOD concentration}\\
+$200 \text{ mg/L}*10^{-3}=0.2 \text{ kg/m}^3$\hfill \textbf{SS concentration}\\
+$S_0=0.25*100000=25000\text{ kg/d}$\hfill \textbf{BOD loading rate}\\
+$X_0=0.2*100000=20000 \text{ kg/d}$\hfill \textbf{SS loading rate}\\
+Assuming \textbf{60\%} of the SS content is settled in the primary tank:\\
+$20000*0.6=12000 \text{ kg/d}$ \hfill \textbf{Primary tank sludge}\\
+Assuming only \textbf{30\%} BOD is removed in the primary tank:\\
+$25000*0.7=17500\text{ kg BOD/d}$\\
+$20000*(1-0.6)=8000\text{ kg SS/d}$\\
+This stream goes to the aeration, then the clarifier. The effluent values are given below:\\
+$0.1*0.7*25000=1750 \text{ kg BOD/d}$\\
+For final effluent SS, the expected value for this kind of system might be assumed as 20 mg/L from its performance and regulations.\\
+$X_f = 20*10^{-3}*100000=2000\text{ kg SS/d}$\\
+For the secondary tank, a yield for the biomass should be accounted.
+\begin{equation}
+    Y = {\Delta}X / {\Delta}S \label{eq:yield}
+\end{equation}
+Based on Yield Equation (\ref{eq:yield}) and assuming \textbf{90\%} BOD has been removed in secondary treatment:\\
+$\Delta S = 0.9*17500 = 15750\text{ kg/d}$\hfill \textbf{Removed BOD in secondary tank}\\
+The yield coefficient for activated sludge processes is assumed as 0.5:\\
+$Y = 0.5$\\
+$\Delta X = 0.5 * 15750 = 7875\text{ kg/d}$\\
+$(1-0.6)*20000-2000+7875=13875\text{ kg/d}$\hfill\textbf{Secondary tank sludge}\\
+The total produced sludge is:\\
+$13875+12000=\textbf{25875}\text{ kg/d}$\hfill\textbf{Total produced sludge}\\
+The final processed sludge amount is:\\
+$0.8*(20000-2000+7875) = \textbf{20700}\text{ kg/d}$\hfill\textbf{Total processed sludge}
+\section{} % Start a new problem
+Reusing sludge from municipal wastewater in a sustainable future is a significant step to be taken\autocite{Vilakazi2023, Tarpani2023}. Many ways of utilizing sludge make it a multipurpose solution for different environmental problems. Two aspects of sludge should be mentioned to discuss its essential value. These are: \textbf{fertilizer value} and \textbf{fuel value}. As a fertilizer, sludge contains many nutrients used in modern fertilizers, such as nitrogen, very little potassium, calcium, and phosphate\autocite{Vilakazi2023, sanin2011}. For its fuel value, various pathways for utilization can be carried out. The organic content of the sludge can be anaerobically digested to produce biogas. Moreover, the calorific value of the sludge lets handlers incinerate for direct heat obtainment or partial pyrolysis\autocite{vesilind1988}.\\
+\begin{minipage}[c]{0.5\textwidth}
+    \medskip
+    \textbf{Fertilizer value:}\\
+    In terms of land-spreading, as a source of nutrients and soil conditioner, sludge is an excellent alternative. Especially in places where there is not much human interaction with the soil (such as forested areas or badly impoverished places), it is a good alternative for the reuse application as long as the consideration for the laws and regulations exists\autocite{vesilind1988}. Although there are nutrients in the sludge, they are not readily usable by the plants, and they should be converted to be utilized. There are several considerations: \textbf{nitrogen loading} for groundwater pollution, heavy metals such as \textbf{cadmium} due to its toxicity, and \textbf{pathogens} for the public health\autocite{vesilind1988}. Although the yield increased when used in a specific ratio, the public perception of using biosolids for agricultural purposes was not leaning to use it\autocite{sanin2011}. \textit{Nutrient enrichment} and \textit{microbial stabilization} are remarkable enhancements for this kind of use of sludge.
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \textbf{Fuel value:}\\
+    Complete incineration, besides heat gain, deals with most problems caused by sludge handling since it is the most effective sludge stabilization tool\autocite{vesilind1988}. The volume of sludge is reduced significantly. Several considerations include \textbf{heavy metal content}, \textbf{inert ash disposal}, and \textbf{harmful gas emissions}. \textit{Dewatering} and \textit{drying} to increase its calorific value are nice modifications for this method of discarding. In addition, the previously mentioned pyrolysis is a base operation for \textit{enhanced fuel or oil from sludge processes}\autocite{sanin2011}. It has an excellent yield per tonne of sludge and diverse utilization areas.
+\end{minipage}
+\section{} % Start a new problem
+Stability has been defined in many ways by different sources\autocite{sanin2011}. According to \cite{sanin2011}, stable sludge can be defined as \textit{the sludge that can be disposed of or used for beneficial purposes without $^{1)}$ damage to the environment, $^{2)}$ damage to human health, $^{3)}$ creating unacceptable nuisance conditions.} Based on this definition, some of the stability parameters are odor, pathogen levels, toxins, change in the oxygen uptake rate, change in gas production via anaerobic activity, nitrification, TOC, BOD, and COD levels, and finally, ATP, DNA and enzymatic activity presence\autocite{sanin2011, vesilind1988}. Recent studies also include some micro-pollutants due to their little presence causing catastrophic and not concluded long-term effects.
+\begin{enumerate}[a)]
+    \item ODTÜ lawn:\\
+    The ODTÜ Campus has several "green" locations. As mentioned in the previous question, sludge is a great soil conditioner and fertilizer alternative. In some cases, pathways, including direct interaction, should be considered since inhabitants like to spend time around certain places. Ingestion, inhalation, and skin exposure around the application sites are possible pathways that impose serious health risks. The forest locations of the campus might be considered better applicants for this augmentation. For stability I would like to check \textbf{pathogens} and \textbf{odor} in this case.\\
+    Odor is a hard parameter to quantify due to its subjectivity. Although it is not a conventional way to measure and quantify the odor, a \textit{dynamic-olfactometer} can be used to derive a Personalized Specific Odor Number\autocite{vesilind1988}. \textit{Gas chromatography} measurements are good for identifying and quantifying the gas contents\autocite{sanin2011}. To provide such a stabilized product, \texttt{anaerobic digestion} and \texttt{composting} can be great alternatives due to requiring less energy. They are both somehow effective in pathogen and odor reduction.
+    \item River deposition:\\
+    When discussing an aquatic receiver for the sludge, several crucial parameters should be mentioned to protect natural sources and prevent further complications by source control. Parameters that should be mentioned are \textbf{changes in oxygen uptake rate}, \textbf{nitrification susceptibility}, \textbf{volatile solids}, \textbf{TOC}, \textbf{BOD} \textbf{\&} \textbf{COD}, \textbf{toxins}, and \textbf{emerging micropollutants} in the sludge.\\
+    \textit{The SOUR test} can measure the change in the oxygen uptake rate; this test would disclose the fate of the sludge in the receiving body by displaying the viability characteristics of the sludge. Nitrification is a severe problem in water bodies that disturb aquatic life. Some measurements for \textit{Total Kjeldahl Nitrogen (TKN)} can be carried out to determine the severity of a possible algal bloom. Similar to oxygen uptake rate, some parameters such as BOD, COD, TOC, and volatile solids content are good indicators for stability. The organic portion of the sludge creates a considerable fraction of environmental problems. The sludge can be analyzed by \textit{conventional measurement methods for these parameters}. Toxins and emerging micropollutants are significant due to their adverse effect on aquatic life. According to the wastewater content, a special instrumental analysis might be utilized. For instance, \textit{atomic absorption spectrometry} is a great technique for heavy metals. For emerging pollutants, specialized methods for microplastics may be researched and applied, e.g., \textit{TED-GC-MS}. For a stabilization method to include toxin removal, \texttt{lime treatment} or \texttt{quicklime} can be applied\autocite{sanin2011}.
+    \item Golf course:\\
+    The gold courses are social places people spend time, whether maintaining it or playing golf. Considering the previous ODTÜ lawn example, \textbf{pathogens} and \textbf{odor} stability should be maintained. Another point that should be considered is that excess water supports such fields. This might create an extra transport path for the pollutants to travel and reach different bodies, overlooking the climate conditions. This includes \textbf{toxins} and \textbf{emerging micro-contaminants} finding their way into groundwater sources. Moreover, it would be a good practice to monitor the \textbf{VSS content} of the biosolids stored for the golf course since it can attract rodents, which results in pathogens being carried\autocite{vesilind1988}. \texttt{Aerobic digestion} could be funded by the golf course to stabilize this sludge.
+\end{enumerate}
+\section{} % Start a new problem
+\begin{minipage}[c]{0.5\textwidth}
+For simple carbohydrates, \textbf{Buswell Equation} can be used to determine biogas potential \autocite{buswell1933}. For the sludge part of the question, an adapted version of Buswell Equation (\ref{eq:Buswell}) will be implicated to determine the possible methane yield with possible ammonia production\autocite{Angelidaki2004, sialve2009}.
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\fbox{\parbox{0.95\textwidth}{\textbf{Assumptions}\\100\% stoichiometric efficiency\\No cell maintenance or anabolism}}
+\end{minipage}
+\begin{equation}
+    \ce{C_aH_bO_cN_d + $\frac{4a - b - 2c + 3d}{4}$H2O -> $\frac{4a + b - 2c - 3d}{8}$CH4 +  $\frac{4a - b + 2c + 3d}{8}$CO2 + dNH3}\label{eq:Buswell}
+\end{equation}
+Using Equation \ref{eq:Buswell}, all the requested chemicals are as follows:\\
+\ce{C2H5OH -> 1.5CH4 +  0.5CO2}\\
+\ce{C6H5CH3 + 5H2O -> 4.5CH4 +  2.5CO2}\\
+\ce{C3H6O + H2O -> 2CH4 +  CO2}\\
+\ce{C10H19O3N + 4.5H2O -> 6.25CH4 +  3.75CO2 + NH3}\\
+As indicated in formulas, the yield order goes: \textbf{Sludge} > \textbf{Toluene} > \textbf{Acetone} > \textbf{Ethanol}. It is crucial to note that this is based on an empirical formula. Some chemical compounds require delicate conditions for hydrolysis and methanogenesis compared to others. Furthermore, the efficiency varies between compounds based on the chemical's complexity and toxicity\autocite{Edwards1994}.
+\section{}
+\begin{minipage}[c]{0.6\textwidth}
+Since the design is based on a loading factor, a hydraulic retention time ($\tau$) must be determined. Sludge density based on assumptions is calculated as $1.02*1000=1020\text{ kg/m}^3$
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\fbox{\parbox{0.95\textwidth}{\textbf{Assumptions}\\Water density: 1000 kg/m$^3$\\SG: 1.02\\70\% volatile content}}
+\end{minipage}
+$$4.2\% = \frac{4.2\text{ kg VSS}}{100\text{ kg sludge}}*1020\frac{\text{kg sludge}}{\text{m}^3}=42.84\text{ kg VSS/m}^3$$
+When the solid content of sludge is divided by the expected solid loading, it gives a solid retention time (SRT) value for the volume calculation.
+$$\frac{42.84\text{ kg VSS/m}^3}{4\text{ kg VSS/m}^3*\text{d}^{-1}}\approx11\text{ days}$$
+This number can be cross-validated by the \textbf{Table 13-29}: \textit{Effects of sludge concentration and hydraulic detention time on volatile solids loading factor} (pg. 1510)\autocite{metcalf2014}
+$$4.2\%\text{ VSS}*\frac{100}{70}=6\%\text{ Sludge concentration}$$
+Checking for solids loading and applying linear interpolation on the table yields 10.85 days, which can be rounded to 11 days.
+$$11\text{ days}*9.46\text{ m}^3/\text{d}\approx\textbf{105}\text{ m}^3\text{ minimum tank volume is required.}$$
+\newpage
+\printbibliography
+\end{document}

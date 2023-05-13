@@ -9,6 +9,7 @@ bottom=1in, bindingoffset=0.2in]{geometry}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{graphicx}
 
 
 \title{{\Large ENVE 422}\\ {\small Treatment \& Disposal of Water \& Wastewater Sludge}}
@@ -132,6 +133,12 @@ Microorganisms: Viruses, fecal coliforms, salmonella...\\
 Before and after $\rightarrow$ they are still there after the treatment.
 
 \textbf{Quantities\footnote{A question in homework and quiz}:}
+\begin{figure}[ht] % this part can be written by math formulas and tikz
+    \centering
+    \includegraphics[width=0.9\textwidth]{SludgeQuantities.png}
+    \caption{Flow chart of a sludge generation in a conventional wastewater treatment plant.}
+    \label{fig:sludge}
+\end{figure}
 \[S_0 \rightarrow incoming\,BOD\,(mass/time)\]
 \[X_0 \rightarrow incoming\,solids\,(mass/time)\]
 Those are loads.\\
@@ -146,7 +153,7 @@ $\Delta$X is net solids produced by biological action.\\
 Y (Yield) $\Delta$X/$\Delta$S\\
 $\Delta$S = hS\textsubscript{0}-ihS\textsubscript{0}\\
 Y = 0.5 for activated sludge;\\
-Y = 0.2 for trickling filters, because it is biofilm.
+Y = 0.2 for trickling filters, because it is bio-film.
 \subsection{Sludge Characteristics}
 Caused due to differences in the type and quality of wastewater and differences in the wastewater treatment processes and operations.\\
 General sludge characteristics by typical parameters can be explained (even though it is time dependent).\\
@@ -161,12 +168,14 @@ General sludge characteristics by typical parameters can be explained (even thou
     \[\frac{1}{S}= \sum_{i=1}^{n} \frac{W_i}{S_i}\]
     \item Sludge density\\
     Again, very close to 1 (1.0... in examples).
-    \item Solid concentration\\ % tree make for figure 5
+    \item Solid concentration\\
     mg/L or \% solids\\
     if we assume the specific gravity of the slurry is 1.0,\\
-    10,000 mg/L = 1\%\\
+    10,000 mg/L = 1\%\\ % explain the measurement
+    from percent:\\
     For sludge with higher S values, the relationship will change.
-    \item Settling characteristics\\
+    \end{enumerate}
+\textbf{Settling characteristics:}\\
     How well it settles.
     \begin{itemize}
         \item Zone Settling Velocity\footnote{Hindered settling test} (ZSV)\\
@@ -176,9 +185,9 @@ General sludge characteristics by typical parameters can be explained (even thou
         \textbf{Higher concentration compresses in more time, the already settled particles creates interference.}\\
         Why do we care settling in second?
         \begin{enumerate}
-            \item if not good settling, the return sludge will be low.\\
+            \item If not good settling, the return sludge will be low.\\
             return sludge $\rightarrow$ maintaining a good solid content, good MLSS results in good removal.
-            \item if not settle, we lose them to effluent, all the work we did is gonna be wasted.
+            \item If not settle, we lose them to effluent, all the work we did is gonna be wasted.
         \end{enumerate}
         \item Sludge Volume Index (SVI)\\
         Quick test.\\
@@ -207,12 +216,379 @@ General sludge characteristics by typical parameters can be explained (even thou
             \item water
         \end{enumerate}
     \end{itemize}
-\end{enumerate}
 Extracellular polymers (EPS) hold individual microorganisms $\rightarrow$ flocs causes separation an settling.\\
 Filamentous organisms give strength to the structure.\\
 EPS is a major component, creates a structure with water channels, gaps, reservoirs.\\
 It has pores: porosity.\\
-Activated sludge: 0.999
+Activated sludge porosity: 0.999
+\date{\begin{flushright}March 24, 2023\end{flushright}}
+\textbf{Distribution of Water in Sludge}\\
+Sludge is two-phase slurry.\\
+To carry the sludge, we must minimize the volume of the sludge.
+Form of water in sludge determines the effectiveness of sludge treatment.\\
+Besides drying, freezing is a good option for dewatering.
+Freezing does not happen at 0 or lower like -3, it happened -20 degree Celsius.
+Constituents of sludge:
+Free (bulk) water (75\%):\\
+Water not associated with solids and not influenced by solids.
+Interstitial water:\\
+Water trapped in the interstitial spaces of the flocs and organisms. this part can be removed by mechanical dewatering.
+Vicinal water:\\
+Multiple layers of water molecules help tightly to the particle surface by hydrogen bonding. Very hard to remove, it exists as long as there is a surface. The binding force is really strong.
+\textbf{Lower density}, \textbf{higher viscosity} compared to bulk water. Very critical part!
+Water of Hydration:\\
+Chemical bound water with the particles, only removable with the expenditure of thermal energy (ex. drying).\\
+dewatering -> 20 percent
+thermal drying -> 95 percent
+Rheology:\\
+Science of flow and deformation of fluids.\\
+Commonly measured in terms of \textbf{viscosity}.\\
+Shear force applied, a velocity distribution occurs.
+\[\tau = \mu * \frac{du}{dy}\]
+$\tau$ is shear stress,\\
+$\mu$ is viscosity,\\
+du/dy is the shear rate.\\
+Viscosity is dependent on temperature.\\
+sludge $\rightarrow$ mostly not Newtonian but if it is diluted it is Newtonian.
+It is not about thickness, thick fluids can be Newtonian.
+
+ \begin{enumerate}
+     \item Plastic fluids:\\
+     There is a intercept (yield stress, that should be overcome to make the fluid flow) in the formula, but it looks like Newtonian.
+     \item Pseudoplastic fluids:\\
+     \textbf{Most} wastewater sludges are neither Newtonian nor plastic non-Newtonian.\\
+    K = fluid consistency index, analogous to viscosity,\\
+    n is flow behavior index,\\
+    n < 1 for this sludge flow.
+    \item Dilatant fluids:\\
+    We don't see that in sludge.\\
+    same as pseudoplastic fluid, but
+    n > 1.
+ \end{enumerate}
+Sludge is believed to be a mix of pseudo-plastic and plastic, which means with a intercept decreasing curve.\\
+Viscosity of sludge changes over time. It is a thixotropic fluids, since we break flocks while adding shear stress, a hysteresis (it does not follow the same curve) loop occurs.\\
+$\mu = \mu_0(1+2.5\phi)$ Einstein's Equation of Viscosity\\
+$\phi$ is the volume fraction of particles.\\
+The particles in the medium increases the viscosity, follows 10\% volume fraction but this is for molecules that don't interact with each other.\\
+4 parameters: shear stress, time of measurement, temperature, solids concentration.\\
+Specific Resistance to Filtration as a Dewaterability Indicator:\\
+Belt filter, vacuum filter were mostly based on filtration.
+Now, it is based on centrifugation.
+Darcy's law is based. % add the darcy's law 
+Carman adapted Darcy's law for filtration.\\ % add the Carman
+The resistance is contributed by the filter medium and the cake.
+Coakley and Jones adapted Carman's theory.\\
+They were noisy, electricity use too much, too much space.\\
+Resistance for sludge is better term so R = 1/K.\\
+Specific resistance is  time / volume vs. volume.\\
+Theta divided by V, certain slope and intercept, which is filter media resistance.\\ % put the formulas
+Specific resistance = Buchner funnel apparatus.\\
+Definitely gives you dewaterability with filtration based system
+inorganic/non compressible minerals, vacuum filtration is used.\\
+w = w/v (almost like density)\\% cake deposited per unit volume % derive the formula of w
+A new test is developed.\\
+CST (capillary suction time) apparatus.
+Gives an idea for 1 cm movement of water, developed in England
+national lab, comparing sludge, best conditioners
+function of:
+\begin{enumerate}
+    \item CST filter properties
+    \item Instrument properties
+    \item Sludge related properties
+\end{enumerate}
+It is an empirical model by Vesilind. % add the formula
+\begin{itemize}
+    \item sensors, paper thickness, collar size, paper absorbency
+    \item sludge sample, Fluid viscosity, solids concentration
+\end{itemize}
+SRF $\rightarrow$ higher, harder to filter, resistance\\
+x (cy) $\rightarrow$ higher, easier to filter, filterability\\ % change the shape of that X
+they both independent, both are good, SRF is easier to measure but correlations might help.\\
+\textbf{Chemical characteristics:}\\
+Presence of organic materials make it complicated.\\
+Important for the final destination of sludge.\\
+Dry sludge has a fuel value up to 5500 cal/g dry volatile solids (not a bad number), Coal has a fuel value of 7700 cal/g, very good coal.\\
+Unfortunately, sludge neither dry not it contains only the organics 550 cal/g.\\
+Combustion of sludge usually requires the use of auxiliary fuel, treatment decreases the calorific value.\\
+66\% Turkish lignite around 1000 and 2000.\\
+For industrial sludges, the calorific values varies. Most of them are higher than the lignite in Turkey.\\
+Municipal sludge average is \textbf{3580 kcal/kg}. And they don't show much variations.\\
+Fertilizer value of Sludge is another important parameter.\\
+Nitrogen, phosphorus and potassium (3 * 8\% rule) is expected.\\
+Micro-nutrients can be provided.\\
+Sludge contains less amounts, sludge is not full scale. However, sludge is a perfect soil conditioner.\\%what does that mean?
+Other problem is heavy metals, chlorinated hydrocarbons, and pathogens.\\
+Electrical charge of sludge is also considered.\\
+A negative net charge in surface for sludge (-20 to -30 milivolts). Since it is a large negative number, dewatering and flocculation are affected.\\
+Metal concentrations are concerning in sludge as well.\\
+Not allowing the metals get into sludge is the best solution to reduce them in the sludge.\\
+\textbf{Biological Characteristics:}\\
+Microbial quality of sludge is crucial due to:
+\begin{itemize}
+    \item different groups of organism in the sludge for the balance
+    \item presence of pathogens in sludge
+\end{itemize}
+Dominating? Based on operational conditions.\\
+Pathogens?? Activated sludge contains less pathogens than raw primary sludge but still contains. We usually report them number per g dry solids.\\
+Shell type ones are resistant.\\
+Ascariasis $\rightarrow$ not common but a concern in Africa, eggs are infecting the body.
+\textit{Surface Polymers}\\
+Polysaccharides outside the bacteria: able to attach, flocs formed, they are resistant.\\
+\textbf{Current issues:}
+\begin{itemize}
+    \item micropolutants in the sludge
+    \item emerging contaminants
+    \item hormones
+    \item detergents
+    \item microplastics
+    \item disinfectants
+    \item plasticizers fumigants
+    \item pesticides
+    \item nanomaterials
+\end{itemize}
+The concentration really low, but they stay.\\
+Why?\\
+Negative impact on aquatic organisms, ex. feminization of male fish.\\
+Bio-accumulate in fatty tissues.\\
+Toxic or Carcinogen.\\
+Endocrine disrupting ones.\\
+Source control is the most affecting.\\
+Use of more effective technologies might help in the future.
+\date{\begin{flushright}March 31, 2023\end{flushright}}
+chapter 2 - sludge stabilization
+stabilization defines the operations and processes carried out on sludge to minimize its damage to the environment when sludge is disposed of.
+i\begin{itemize}
+    \item Reduction of Volatile Suspended solids (VSS)\\
+    it indicates microbial content activity, reduction helps with stability for reducing it.\\
+    70-80\% is VSS in sludge.\\
+    Standard is based on this.
+    \item Odor Reduction\\
+    Various sources causes, hydrogen sulfer is the most ipmortant constitient.
+    sulfurous and nitrogenous compounds smell.\\
+    H2S -> detection limit is 0.040 and olfactory threshold concentration 0.4
+    anaerobic sulfur cycle originates hydrogen sulfide gas. low concentaartions, terrible smell, in high concentations H2S has a rather pleasant smell, but it is lethal.
+    The olfactory threshold limit for H2S is 1.3e-3 but % add here the rest
+    \item Pathogenic Microorganisms\\
+    Pathogens are always in the sludge. % add here the log reduction and percent reduction
+    \item Toxicity\\
+    two questions: toxicity to what? and what is the  ultimate destination?\\
+    generally wastewaater sludge consists of high quliaities of heavy metals, these are toxic to most organisms; these cannot be stabilized, since they are not biodegredable, they might be reduced to a certain level, prevention is the better option.\\
+    intended use plays an important role.\\
+    land application % add the reasons\\
+    the prevention regulations helped a lot with Ankara Sludge content.
+    \item Change in Oxygen Uptake Rate
+    \item Gas Production % add details
+\end{itemize}
+
+Method of Stabilization
+\begin{itemize}
+    \item Biological
+    \item Chemical
+    \item Physical
+\end{itemize}
+Biological is the most common, which is the most effective.,
+Conventional digester  % bold
+is a large tanl with either or floatinbg or a fixed cover. Sludge is pumped into the middle and stabilized solids are removed from the bottom. Since the sludge is not mixed, the contents of digester separate into layers of scum, supernatant and active and stabilized solids. The disadvantage they require quite long detention times.
+High rate digester % bold
+Mixed either mechanically or by circulating the compressed digester gas.
+Two fazed digestion:
+Heated then primary digester (mixed) then settling in secondary digester
+Supernatant sent back to the starting of primary treatment
+This is called, two stage high rate anaerobic digester.
+The gas might be pumped back into the system for mixing.
+Perperllers can be used for the mixing aas mechanical but it is superficial.
+The nozzlers can also be used.
+Cylinder ones are called "pancake"
+Egg shaped ones to prevent dead zones in the digester.
+Steps of Digestion:
+Step 1. Solubilization Step in which the complex organics are degreadted by the extracellualar enzymes into slouble organics and simple sugars. Slow degredation, enzym activity is really important, a real limiting step. % bold
+Step 2. Acid Formation Step in wihch  the soluble organics are degreaded by a group of microorganisms known as acid formers.
+Acid formers are not the problem for the sludge, they are in the sludge and not affected by their environment easily. Therefore, this is not a limiting step.
+Step 3. Methane Formation Step in which the methane forming bacteria which are strictly anaerobic take the organics acids and convert them to methane and carbon dioxide. Another difficult step, very limiting step. pH is very sensitive. The environment is really important, hence alkalinity is an important component in anaerobic treatment. They are not really rate limiting but they are the most crucial point of the digestion. % ask
+%%% there are formulas that can be inserted here esp. Buswell Equation
+Pretreatment to Increase the efficiency
+Use of chemicals like NaOH, ozone, physical techiniques such aas blending or ultrasonication.
+
+date
+stabilization part
+anaerobic composting is not possible.
+
+Lecture 3
+Transportation of sludge is an issue, pumping 15 km is same as dewatering, why do we do that because it might not be available for the treatment system.
+Liquid 1 10
+Dewatered Sludge 10 35
+DDried 35 over
+Low concentrations 5\% approximately water
+ex clarifiers 1.2 1.5\%
+turbelent with 0.3 m/s
+It is important it is turbulent happening
+- Sludge solids
+- Sludge rheology
+- volatilke solids
+- temperature
+Newwtonion fluids -> pressure drop is proportional to the velocity and visscocity, for non, it is not proportional.
+loses = exit loses + minor losses + frinction losess
+Friction losses is the most important, 3 equations
+different expertise, still dilute sludge
+Manning equation, be careful about looking at the empirical equaation, stick to the units
+R, cross sectional area / wtter premeter, S is slodpe of the energy grade line
+Open channel flows
+such as sewers
+Hazen Williams
+another empirical one
+here as roungness increases, velocity degreses in this formula
+commonly used for full pipe
+Darcy-Weisback Equation
+universal
+f is function of R
+the complication is mu, dependent of shear rate and time, thixotropic material
+the formula for reynolds equation is modified:
+both applicable for non and newtonian
+f = 64/R for laminar
+the modified version takes the form of normal version when you put the right numbers
+curve fitting into K and n
+redoe this everytime with new sludge
+Alternatively a solid correction factor can be applied after the headloss calculations for water according to solids and velocity
+steel
+cast iron
+concrete
+pvc
+150 mm 200mm
+cleaning is a must because of clogging
+short distances up to 20\%
+solids concepts up to 8\%
+kinetic pumps and positive displacement such aas plugnger pumps diagramp pumps and rotery pumps
+Kinetic (centrifugal) impoler rotaroyu -> pulls the sludge and pushes
+clugging problem for sludge, continuous mode so it is good for dilute ones
+postiive displacement -> pull and push (pulsating motion) theory such as piston or diafram
+Rotary screw pumps, 9-12 m upwards
+dewatered sludge pumping?
+15 to 40\% we talk about pudding
+mechanical conveyors, screw augers or best is truck transportation
+hydrolically driven reciprocating piston pumps* for the high solid concentration used for 20 years by municipals
+dried sludge conveying are done with mechanical conveyors.
+
+
+4/28
+
+sludge thickner
+very important, also changes the concentration, first method to reduce volume
+const effectiveness of the treatment
+even solid concentration increases only 1\% is not high, volume reduction is the crucial part.
+digesters are costly operations. thickneres are before them. requires less volume
+thickener removes the water
+thickner vs dewtering
+thickner -> lower than 15 solid concentration
+dewatering -> higher than 15 solid concentration
+for instance: centrifugion
+thickened still acts like a water, dewaater usually solid
+gravity thickeners
+floatition thickeners
+centrifugal thickener
+gravity belk thic
+rotatory drum
+gravitty thicknere -> most likely a settling tank, bottom part collects the solid
+circulars
+3 to 4 m depth 21 to 24 m, detention time is increased, long detention time anoxic conditions, gas production.
+slope is great for minimum solid retention, reduces raking transport problems
+gravity settler and thickner,
+thickner is longer retention time, 24 hours typically, clarification and thickenening achiveeved.
+the longer we wait, floating sludge occurs, because of nitrification conditions.
+can be based on experiences, also lab data
+some parameters are given, but there are example of lab designs
+solid flux: kg solids/h/m2 % they have already values
+tabulated activated sludge
+tricking filter humus
+raw primary sludge
+raw primary and WAS
+pure o2 activated sludge
+A = Q/Flux
+it gives area
+inf solid concentration, thickening time, thickened solid conc, dry solids loading
+lab setup ddesgin:
+lab settling data.
+typically 1000 mL
+sludge starts to settle with time and it is plotted
+height vs time graph, and the velocity is tangent line to that ZSV
+cleared water, hindered zone, transation zone, compaction
+compaction occurs, where the magic happens
+more solid consentration which results in ZSV vs solid concentration
+hinderence is the cause of parabolic inverse relation
+flux = velocity * solid concentration
+flux vs solid concentration can be retrieved as well (more like log gaussian distrribution)
+Feed -> Effluent
+two ways of solid movement:
+Under the influence of their settling velocity
+due to continuous removal of sludge at the bottom of underflow
+settling velocity -> batch settling
+second mechanism, underflow flux -> independent of the solids settling in the thickener
+Gu = uCi
+underflow flux -> straight line due to u being the m
+total flux (Gi) = uCi + ViCi
+it does not show batch flux, they are both added, total flux
+Co is entering Cu ultimate goal
+CL value, limiting flux, which means GL, it is the design limit, minimum solid loading (GL) we calclate for the maxixmmum area reqiured.
+Total flux curve gives it. Simpler method, solids flux curve from Cu tangent line to graph gives Cl on x and GL on Y value. Both cases, GL is the same
+A = Q0C0/GL
+floatation sludge
+float them up to surface using bubbles
+disolved air floatation is most common used.
+fine gas bubbles to the liquid phase, solid particles, skemmer collects them
+lighter sludges work better, WAS aerobically contact activated, extended aeration, not used for primary  or trickling sludge (these are ssettled by gravity better in terms of economically)
+Advantages:
+small and light particles
+higher solid loading can be treated with DAF
+less space
+Disadvantages
+requires pilot scale tests
+daf systems are highly mechanized
+operation and maintenance costs are significant
+collision -> attacment -> detachment
+A/S (mL air/mg solids) ratio is important, characteristics of sludge, distirbution of air, air dissolvation efficiency, it is important because the blanket can be escaped.
+Based on: surface loading rate, detention time, solids loading rate.
+again solid capture rate, solids recovery rate, in terms of percentage, how well you capture the solids, thel lower of the solids in the effluent, higher this number
+Air to solids ration, surface area, detention time, the recycle rate can be achived.
+formulas for the aeration
+the conclusion: floation less expensive for activated sludge, 1\% solids will result in 4-6\% esp when polymers are used
+gravity belt thickeners
+1980s
+belt moving, sludge can sit
+gravity and coagulation and flocc, which is conditioning
+while on the belt some water has been lost, by plows
+sludges that are good: aerobically and anaerobicall digested solids, alum and lime solids, primary solids, WAS, blended sludge between 0.4\% to 8\%
+how well: solid capture rate, solid concentration up to 6\%
+primary sludge can be used for good good solid concentration
+rotary drum thicknere:
+we use again polymer
+drain water from the rotary drums using different tools in the thing
+solids recovery -> only the rest of the solids escaping
+WAS, anaerobically and aerobically digested sludge and some industraial ssludge
+very good solid capture
+smaller space requirements relatively low capital cost low power consumption
+critical polymer, good odor keeper
+small to medium wastewater treamtment
+Extra:
+SVI = mL sludge * 1000 / MLSS (mg/L)
+not dependent on solid concentration, may result in bad cases
+a not settled 1000 mL sludge with 10000 mg/L MLSS content gives 100, which is good in terms of numbers but in reality it is bad.
+40 120 well settled
+120 nulking
+150 severely bulking
+bulking -> hard to settle with gravity
+1. viscous bulking
+2. filamentous bulking
+1. viscous bulking: so much going on, extracellular polymers which is caused by excessive carbohydrate loading to the system C/N ratio of 40
+2. Filamentous microorganism, Low DO, Low F/M, Nutrient deficiency, Toxic subbstances
+why problem?
+low return activated sludge
+WAS is low
+in severe cases sludge blamnked öy overflow
+how to solve filamentous bulking:
+11. you have to know the exact problem in the system
+manipulation of return activated sludge flow, to regulate both DO and the organic concentration in the tank
+2. addition of chemicals to imvporve settling
+3 addition of toxicant sto selective lill the flamentous bactreria
+last two are temporary fixes
 
 
 \end{document}

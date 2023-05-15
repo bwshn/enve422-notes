@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: ENVE422-Notes
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Bekir
+    family-names: Şahin
+    email: sahin.bekir@metu.edu.tr
+    affiliation: Middle East Technical University
+    orcid: 'https://orcid.org/0000-0002-4650-1500'
+identifiers:
+  - type: url
+    value: 'https://github.com/bwshn/enve422-notes'
+repository-code: 'https://github.com/bwshn/enve422-notes'
+abstract: ENVE422 course provided by METU repository archive.
+keywords:
+  - enve422
+license: MIT

@@ -66,14 +66,21 @@ S1_model <-
     lm((log(y) ~ log(x)),
        data = sludge %>% filter(Sludge_Type == "S1") %>% mutate(x = Shear_Rate, y = Shear_Stress)
     )
+# print(summary(S1_model))
+# print(S1_model$coefficients)
+# print(summary(S1_model)$r.squared)
 S2_model <-
     lm(y ~ x,
        data = sludge %>% filter(Sludge_Type == "S2") %>% mutate(x = Shear_Rate, y = Shear_Stress))
+# print(summary(S2_model))
+# print(S2_model$coefficients)
+# print(summary(S2_model)$r.squared)
 S3_model <-
     lm(y ~ x,
        data = sludge %>% filter(Sludge_Type == "S3") %>% mutate(x = Shear_Rate, y = Shear_Stress))
-
-
+# print(summary(S3_model))
+# print(S3_model$coefficients)
+# print(summary(S3_model)$r.squared)
 ggplot(sludge,
        aes(
            x = Shear_Rate,
@@ -90,7 +97,7 @@ ggplot(sludge,
     ) +
     theme_classic() +
     geom_smooth(
-        size = 0.5,
+        linewidth = 0.5,
         method = "nls",
         formula = "y~a*x^b",
         method.args = list(start = c(a = 1, b = 1)),
@@ -98,14 +105,14 @@ ggplot(sludge,
         data = subset(sludge, Sludge_Type == "S1")
     ) +
     geom_smooth(
-        size = 0.5,
+        linewidth = 0.5,
         method = "lm",
         formula = 'y ~ x',
         se = FALSE,
         data = subset(sludge, Sludge_Type == "S2")
     ) +
     geom_smooth(
-        size = 0.5,
+        linewidth = 0.5,
         method = "lm",
         formula = 'y ~ x',
         se = FALSE,

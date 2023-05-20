@@ -97,7 +97,7 @@ ggplot(sludge,
     ) +
     theme_classic() +
     geom_smooth(
-        linewidth = 0.5,
+        linewidth = .75,
         method = "nls",
         formula = "y~a*x^b",
         method.args = list(start = c(a = 1, b = 1)),
@@ -105,14 +105,14 @@ ggplot(sludge,
         data = subset(sludge, Sludge_Type == "S1")
     ) +
     geom_smooth(
-        linewidth = 0.5,
+        linewidth = .75,
         method = "lm",
         formula = 'y ~ x',
         se = FALSE,
         data = subset(sludge, Sludge_Type == "S2")
     ) +
     geom_smooth(
-        linewidth = 0.5,
+        linewidth = .75,
         method = "lm",
         formula = 'y ~ x',
         se = FALSE,
@@ -120,7 +120,19 @@ ggplot(sludge,
     ) + theme(
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        legend.background = element_blank(),
+        legend.background = element_rect(fill = 'transparent'),
         panel.background = element_rect(fill = "transparent", colour = NA),
-        plot.background = element_rect(fill = "transparent", colour = NA)
-    )
+        plot.background = element_rect(fill = "transparent", colour = NA),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        axis.ticks = element_line(color = "black")
+    ) + scale_color_grey(start = 0.8, end = 0.2)
+
+ggsave(
+    "sludgeShear.png",
+    width = 15,
+    height = 10,
+    units = "cm",
+    bg = "transparent",
+    dpi = 600
+)

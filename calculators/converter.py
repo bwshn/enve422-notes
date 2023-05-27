@@ -1,57 +1,58 @@
 import math
 
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
+def specific_gravity_to_density():
+    """
+    Convert specific gravity to density.
+    """
+    specific_gravity = float(input("Enter the specific gravity: "))
+    density_water = 1000  # Density of water in kg/m³ at 4°C
+    density = specific_gravity * density_water
+    print(f"\nDensity: {density} kg/m³\n")
+
+
+def density_to_specific_gravity():
+    """
+    Convert density to specific gravity.
+    """
+    density = float(input("Enter the density (kg/m³): "))
+    density_water = 1000  # Density of water in kg/m³ at 4°C
+    specific_gravity = density / density_water
+    print(f"\nSpecific gravity: {specific_gravity}\n")
 
 
 def solid():
-    """Solid percent to mg/L conversion function, assuming water density is 1kg/L"""
+    """
+    Solid percent to mg/L conversion function, assuming water density is 1kg/L.
+    """
     val = float(input("Enter solid (%) content: "))
     s_gravity = float(input("Enter specific gravity: "))
-    mgL = val*s_gravity*10**6/100.0
-    print("\n{0:.0f} mg/L\n{1:.2f}‰ || {2:.0f} ppm || {3:.0f} ppb\n".format(mgL,
-          val * 10.0, val * 10000.0, val * 10000000.0))
+    mgL = val * s_gravity * 10000
+    print(f"\n{mgL:.0f} mg/L\n")
 
 
 def mg_L():
-    """mg/L to solid % conversion function, assuming water density is 1kg/L"""
+    """Converts mg/L to solid %, assuming water density is 1 kg/L"""
     mgL = float(input("Enter mg/L: "))
     s_gravity = float(input("Enter specific gravity: "))
-    val = mgL*100.0/(s_gravity*10**6)
-    print("\n{0:.2f}% || {1:.2f}‰ || {2:.0f} ppm || {3:.0f} ppb\n".format(
-        val, val * 10.0, val * 10000.0, val * 10000000.0))
+    val = mgL * 100.0 / (s_gravity * 10 ** 6)
+    print(f"\n{val:.2f}%\n")
 
 
 def log_to_percent():
-    """Converts log removal to percent removal"""
+    """
+    Converts log removal to percent removal.
+    """
     log_removal = float(input("Enter the log removal: "))
     percent_removal = (1 - 10 ** (-log_removal)) * 100
-    numerator = percent_removal
-    denominator = 100
-    while numerator % 1 != 0 or denominator % 1 != 0:
-        numerator *= 10
-        denominator *= 10
-    gcd_val = gcd(int(numerator), int(denominator))
-    print("\n{0:.2f}%\nEach {1:.2f} reduced to 1\nInitial: {2:.2e} || Final: {3:.2e}\n".format(percent_removal, denominator /
-          gcd_val/(denominator/gcd_val - numerator/gcd_val), denominator/gcd_val, denominator/gcd_val - numerator/gcd_val))
+    print("\n{0:.{1}f}%\n".format(percent_removal, int(log_removal)))
 
 
 def percent_to_log():
     """Converts percent removal to log removal"""
     percent_removal = float(input("Enter the percent removal: "))
     log_removal = math.log10(100.0 / (100.0-percent_removal))
-    numerator = percent_removal
-    denominator = 100
-    while numerator % 1 != 0 or denominator % 1 != 0:
-        numerator *= 10
-        denominator *= 10
-    gcd_val = gcd(int(numerator), int(denominator))
-    print("\n{0:.2f} log removal\nEach {1:.2f} reduced to 1\nInitial: {2:.2e} || Final: {3:.2e}\n".format(log_removal, denominator /
-          gcd_val/(denominator/gcd_val - numerator/gcd_val), denominator/gcd_val, denominator/gcd_val - numerator/gcd_val))
+    print("\n{:.2f} log removal\n".format(log_removal))
 
 
 def initial_and_final():
@@ -61,31 +62,30 @@ def initial_and_final():
     removed = initial - final
     percent_removal = (removed / initial) * 100
     log_removal = math.log10(100.0 / (100.0-percent_removal))
-    numerator = percent_removal
-    denominator = 100
-    while numerator % 1 != 0 or denominator % 1 != 0:
-        numerator *= 10
-        denominator *= 10
-    gcd_val = gcd(int(numerator), int(denominator))
-    print("\n{0:.2f} log removal\n{1:.2f}%\nEach {2:.2f} reduced to 1\n".format(log_removal, percent_removal, denominator /
-          gcd_val/(denominator/gcd_val - numerator/gcd_val)))
+    print("\n{0:.2f} log removal\n{1:.{2}f}%\n".format(
+        log_removal, percent_removal, int(log_removal)))
 
 
 ans = True
 while (ans):
-    print("1. Solid % to mg/L || 2. mg/L to Solid %")
-    print("3. Log removal to % || 4. Removal % to log || 5. Initial and final to log and %")
+    print("1. SG to kg/m³ || 2. kg/m³ to SG")
+    print("3. Solid % to mg/L || 4. mg/L to Solid %")
+    print("5. Log removal to % || 6. Removed % to log || 7. Initial and final values to removed log and %")
     fun = input(
-        "What conversion do you want to use? (Enter an appropriate number)\n")
+        "Conversion function: ")
     if fun == "1":
-        solid()
+        specific_gravity_to_density()
     elif fun == "2":
-        mg_L()
+        density_to_specific_gravity()
     elif fun == "3":
-        log_to_percent()
+        solid()
     elif fun == "4":
-        percent_to_log()
+        mg_L()
     elif fun == "5":
+        log_to_percent()
+    elif fun == "6":
+        percent_to_log()
+    elif fun == "7":
         initial_and_final()
     else:
         ans = False

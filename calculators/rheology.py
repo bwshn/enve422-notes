@@ -1,82 +1,95 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+from sklearn.metrics import r2_score
 
-# TODO: add more features
+# Define the rheological models
 
+# Newtonian fluid model
+def newtonian_model(x, viscosity):
+    return viscosity * x
 
-def linear_model(x, a, b):
-    return a + x * b
+# Bingham plastic fluid model
+def bingham_model(x, yield_stress, viscosity):
+    return yield_stress + viscosity * x
 
-
-def exponential_model(x, a, b):
-    return a * np.exp(b * x)
-
-
-def logarithmic_model(x, a, b):
-    return a * np.log(x) + b
-
-
-def power_series_model(x, a, b):
-    return a * (x ** b)
-
-# Define R2 calculation function
-
-
-def calculate_r2(y_true, y_pred):
-    corr = np.corrcoef(y_true, y_pred)[0, 1]
-    r2 = corr ** 2
-    return r2
+# Power-law (shear-thinning or shear-thickening) fluid model
+def power_law_model(x, consistency_index, flow_behavior_index):
+    return consistency_index * x ** flow_behavior_index
 
 while True:
+    # Get input values from the user
+    x_values = input("Enter the shear rate values separated by commas (or 'q' to quit): ")
+    if x_values.lower() == 'q':
+        break
 
-    # Get input values
-    x_input = input("Enter the x values separated by commas: ").split(',')
-    y_input = input("Enter the y values separated by commas: ").split(',')
+    y_values = input("Enter the shear stress values separated by commas: ")
 
-    # Convert input values to float
-    x = np.array([float(val) for val in x_input])
-    y = np.array([float(val) for val in y_input])
+    # Convert input values to numpy arrays
+    shear_rate = np.array(list(map(float, x_values.split(","))))
+    shear_stress = np.array(list(map(float, y_values.split(","))))
 
-    # Fit linear model
-    linear_params = np.polyfit(x, y, deg=1)
-    linear_slope, linear_intercept = linear_params
-    linear_y_pred = linear_model(x, linear_intercept, linear_slope)
-    linear_r2 = calculate_r2(y, linear_y_pred)
+    # Fit data to rheological models
 
-    # Fit exponential model
-    exp_params = np.polyfit(x, np.log(y), deg=1)
-    exp_intercept, exp_slope = np.exp(exp_params[1]), exp_params[0]
-    exp_y_pred = exponential_model(x, exp_intercept, exp_slope)
-    exp_r2 = calculate_r2(y, exp_y_pred)
+    # Newtonian model fitting
+    newtonian_params, _ = curve_fit(newtonian_model, shear_rate, shear_stress)
+    newtonian_r2 = r2_score(shear_stress, newtonian_model(shear_rate, *newtonian_params))
 
-    # Fit logarithmic model
-    log_params = np.polyfit(np.log(x), y, deg=1)
-    log_intercept, log_slope = log_params[1], log_params[0]
-    log_y_pred = logarithmic_model(x, log_intercept, log_slope)
-    log_r2 = calculate_r2(y, log_y_pred)
+    # Bingham plastic model fitting
+    bingham_params, _ = curve_fit(bingham_model, shear_rate, shear_stress)
+    bingham_r2 = r2_score(shear_stress, bingham_model(shear_rate, *bingham_params))
 
-    # Fit power series model
-    power_params = np.polyfit(np.log(x), np.log(y), deg=1)
-    power_intercept, power_slope = np.exp(power_params[1]), power_params[0]
-    power_y_pred = power_series_model(x, power_intercept, power_slope)
-    power_r2 = calculate_r2(y, power_y_pred)
+    # Power-law model fitting
+    power_law_params, _ = curve_fit(power_law_model, shear_rate, shear_stress)
+    power_law_r2 = r2_score(shear_stress, power_law_model(shear_rate, *power_law_params))
 
-    # Print the results
-    print("\nLinear Model:")
-    print("Intercept:", linear_intercept)
-    print("Slope:", linear_slope)
-    print("R2:", linear_r2)
+    # Determine the model with the highest R2 value
+    model_r2_values = {'Newtonian': newtonian_r2, 'Bingham Plastic': bingham_r2, 'Power Law': power_law_r2}
+    best_model = max(model_r2_values, key=model_r2_values.get)
 
-    print("\nExponential Model:")
-    print("Intercept:", exp_intercept)
-    print("Slope:", exp_slope)
-    print("R2:", exp_r2)
+    # Print model parameters and R2 values for all models
+    print()
+    print("Newtonian Model Parameters: ", newtonian_params)
+    print("Newtonian Model R² Value: ", newtonian_r2)
+    print()
+    print("Bingham Plastic Model Parameters: ", bingham_params)
+    print("Bingham Plastic Model R² Value: ", bingham_r2)
+    print()
+    print("Power-law Model Parameters: ", power_law_params)
+    print("Power-law Model R² Value: ", power_law_r2)
 
-    print("\nLogarithmic Model:")
-    print("Intercept:", log_intercept)
-    print("Slope:", log_slope)
-    print("R2:", log_r2)
+    # Check if 'Bingham Plastic' R2 is very close to 'Newtonian' R2 and the intercept value is close to 0
+    if best_model == 'Bingham Plastic' and abs(bingham_r2 - newtonian_r2) < np.exp(-5) and abs(bingham_params[0]) < 0.05:
+        best_model = 'Newtonian'
+        print("\nSince the R² values of Bingham Plastic and Newtonian models are so close (< e⁻⁵) and the intercept is close to 0; The model is likely to be Newtonian model.")
 
-    print("\nPower Series Model:")
-    print("Intercept:", power_intercept)
-    print("Slope:", power_slope)
-    print("R2:", power_r2)
+    # Check the best model and print fluid type if 'Power Law'
+    if best_model == 'Power Law':
+        flow_behavior_index = power_law_params[1]
+        if flow_behavior_index < 1:
+            fluid_type = "Pseudoplastic Fluid"
+        elif flow_behavior_index > 1:
+            fluid_type = "Dilatant Fluid"
+        else:
+            fluid_type = "Newtonian Fluid"
+        print("Fluid type: ", fluid_type)
+    print()
+    if best_model != 'Newtonian':
+        print("The best model is", best_model, "model.")
+    print()
+
+    # Plot the data and best fitted model
+    plt.scatter(shear_rate, shear_stress, label='Data')
+
+    if best_model == 'Newtonian':
+        plt.plot(shear_rate, newtonian_model(shear_rate, *newtonian_params), label='Newtonian')
+    elif best_model == 'Bingham Plastic':
+        plt.plot(shear_rate, bingham_model(shear_rate, *bingham_params), label='Bingham Plastic')
+    elif best_model == 'Power Law':
+        plt.plot(shear_rate, power_law_model(shear_rate, *power_law_params), label='Power Law')
+
+    plt.xlabel('Shear Rate')
+    plt.ylabel('Shear Stress')
+    plt.legend()
+    plt.grid(True)
+    plt.show()

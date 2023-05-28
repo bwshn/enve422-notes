@@ -1,6 +1,6 @@
 import numpy as np
 
-# Define the models
+# TODO: add more features
 
 
 def linear_model(x, a, b):

@@ -80,7 +80,7 @@ def fit_rheological_models():
                 fluid_type = "Dilatant Fluid"
             else:
                 fluid_type = "Newtonian Fluid"
-            print("Fluid type: ", fluid_type)
+            print("Fluid type:", fluid_type)
         print()
         if best_model != 'Newtonian':
             print("The best model is", best_model, "model.")

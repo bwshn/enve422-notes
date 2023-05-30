@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from sklearn.metrics import r2_score
 
+
 def fit_rheological_models():
     """
     Fit rheological models to input data and plot the best model.
@@ -23,16 +24,20 @@ def fit_rheological_models():
 
     while True:
         # Get input values from the user
-        shear_rate_values = input("Enter the shear rate values separated by commas (or 'q' to quit): ")
+        shear_rate_values = input(
+            "Enter the shear rate values separated by commas (or 'q' to quit): ")
         if shear_rate_values.lower() == 'q':
             break
 
-        shear_stress_values = input("Enter the shear stress values separated by commas: ")
+        shear_stress_values = input(
+            "Enter the shear stress values separated by commas: ")
 
         # Convert input values to numpy arrays
         try:
-            shear_rate = np.array(list(map(float, shear_rate_values.split(","))))
-            shear_stress = np.array(list(map(float, shear_stress_values.split(","))))
+            shear_rate = np.array(
+                list(map(float, shear_rate_values.split(","))))
+            shear_stress = np.array(
+                list(map(float, shear_stress_values.split(","))))
         except ValueError:
             print("Invalid input. Please enter numerical values separated by commas.")
             continue
@@ -40,19 +45,25 @@ def fit_rheological_models():
         # Fit data to rheological models
 
         # Newtonian model fitting
-        newtonian_params, _ = curve_fit(newtonian_model, shear_rate, shear_stress)
-        newtonian_r2 = r2_score(shear_stress, newtonian_model(shear_rate, *newtonian_params))
+        newtonian_params, _ = curve_fit(
+            newtonian_model, shear_rate, shear_stress)
+        newtonian_r2 = r2_score(shear_stress, newtonian_model(
+            shear_rate, *newtonian_params))
 
         # Bingham plastic model fitting
         bingham_params, _ = curve_fit(bingham_model, shear_rate, shear_stress)
-        bingham_r2 = r2_score(shear_stress, bingham_model(shear_rate, *bingham_params))
+        bingham_r2 = r2_score(shear_stress, bingham_model(
+            shear_rate, *bingham_params))
 
         # Power-law model fitting
-        power_law_params, _ = curve_fit(power_law_model, shear_rate, shear_stress)
-        power_law_r2 = r2_score(shear_stress, power_law_model(shear_rate, *power_law_params))
+        power_law_params, _ = curve_fit(
+            power_law_model, shear_rate, shear_stress)
+        power_law_r2 = r2_score(shear_stress, power_law_model(
+            shear_rate, *power_law_params))
 
         # Determine the model with the highest R2 value
-        model_r2_values = {'Newtonian': newtonian_r2, 'Bingham Plastic': bingham_r2, 'Power Law': power_law_r2}
+        model_r2_values = {'Newtonian': newtonian_r2,
+                           'Bingham Plastic': bingham_r2, 'Power Law': power_law_r2}
         best_model = max(model_r2_values, key=model_r2_values.get)
 
         # Print model parameters and R2 values for all models
@@ -90,11 +101,14 @@ def fit_rheological_models():
         plt.scatter(shear_rate, shear_stress, label='Data')
 
         if best_model == 'Newtonian':
-            plt.plot(shear_rate, newtonian_model(shear_rate, *newtonian_params), label='Newtonian')
+            plt.plot(shear_rate, newtonian_model(
+                shear_rate, *newtonian_params), label='Newtonian')
         elif best_model == 'Bingham Plastic':
-            plt.plot(shear_rate, bingham_model(shear_rate, *bingham_params), label='Bingham Plastic')
+            plt.plot(shear_rate, bingham_model(shear_rate, *
+                     bingham_params), label='Bingham Plastic')
         elif best_model == 'Power Law':
-            plt.plot(shear_rate, power_law_model(shear_rate, *power_law_params), label='Power Law')
+            plt.plot(shear_rate, power_law_model(
+                shear_rate, *power_law_params), label='Power Law')
 
         plt.xlabel('Shear Rate')
         plt.ylabel('Shear Stress')
@@ -102,5 +116,6 @@ def fit_rheological_models():
         plt.legend()
         plt.grid(True)
         plt.show()
+
 
 fit_rheological_models()

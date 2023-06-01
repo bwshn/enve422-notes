@@ -80,7 +80,7 @@ def fit_rheological_models():
         # Check if 'Bingham Plastic' R2 is very close to 'Newtonian' R2 and the intercept value is close to 0
         if best_model == 'Bingham Plastic' and abs(bingham_r2 - newtonian_r2) < 10 ** -4 and abs(bingham_params[0]) < 0.5:
             best_model = 'Newtonian'
-            print("\nSince the R² values of Bingham Plastic and Newtonian models are so close (< 10⁻⁴) and the intercept is close to 0, the model is likely to be a Newtonian model.")
+            print("\nSince the R² values of Bingham Plastic and Newtonian models are so close (< 10⁻⁴) and the intercept is close to 0 (< ± 0.5), the model is likely to be a Newtonian model.")
 
         # Check the best model and print fluid type if 'Power Law'
         if best_model == 'Power Law':

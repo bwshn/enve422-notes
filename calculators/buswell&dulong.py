@@ -5,6 +5,7 @@ from typing import Dict
 # Define the formula pattern as a constant variable
 FORMULA_PATTERN = r'([A-Z][a-z]*)(\d*)'
 
+
 def count_elements(formula: str) -> Dict[str, int]:
     """
     Count the elements in a chemical formula.
@@ -32,9 +33,10 @@ def count_elements(formula: str) -> Dict[str, int]:
     # Return the element counts
     return element_counts
 
+
 def calculate_compounds(elements: Dict[str, int]) -> Dict[str, float]:
     """
-    Calculate the compounds based on the element counts.
+    Calculate the compounds based on the element counts for Buswell Equation.
 
     Args:
         elements (dict): A dictionary with element counts.
@@ -49,9 +51,12 @@ def calculate_compounds(elements: Dict[str, int]) -> Dict[str, float]:
     sulfur = elements.get('S', 0)
 
     # Calculate the compound values
-    water = (4 * carbon - hydrogen - 2 * oxygen + 3 * nitrogen + 2 * sulfur) / 4
-    methane = (4 * carbon + hydrogen - 2 * oxygen - 3 * nitrogen - 2 * sulfur) / 8
-    carbon_dioxide = (4 * carbon - hydrogen + 2 * oxygen + 3 * nitrogen + 2 * sulfur) / 8
+    water = (4 * carbon - hydrogen - 2 * oxygen +
+             3 * nitrogen + 2 * sulfur) / 4
+    methane = (4 * carbon + hydrogen - 2 * oxygen -
+               3 * nitrogen - 2 * sulfur) / 8
+    carbon_dioxide = (4 * carbon - hydrogen + 2 * oxygen +
+                      3 * nitrogen + 2 * sulfur) / 8
     ammonia = nitrogen
     hydrogen_sulfide = sulfur
 
@@ -65,6 +70,7 @@ def calculate_compounds(elements: Dict[str, int]) -> Dict[str, float]:
     }
 
     return compounds
+
 
 def dulong_formula(elements: Dict[str, int]) -> float:
     """
@@ -83,16 +89,17 @@ def dulong_formula(elements: Dict[str, int]) -> float:
     sulfur = elements.get('S', 0)
 
     # Calculate the weight ratios
-    total_weight = carbon * 12.011 + hydrogen * 1.00784 + oxygen * 15.999 + nitrogen * 14.0067 + sulfur * 32.065
+    total_weight = carbon * 12.011 + hydrogen * 1.00784 + \
+        oxygen * 15.999 + nitrogen * 14.0067 + sulfur * 32.065
     c_ratio = carbon * 12.011 / total_weight
     h_ratio = hydrogen * 1.00784 / total_weight
     o_ratio = oxygen * 15.999 / total_weight
-    n_ratio = nitrogen * 14.0067 / total_weight
     s_ratio = sulfur * 32.065 / total_weight
 
     HCV = 33800 * c_ratio + 144000 * (h_ratio - o_ratio / 8) + 9270 * s_ratio
 
     return HCV
+
 
 def process_formula(formula: str) -> None:
     """
@@ -116,8 +123,9 @@ def process_formula(formula: str) -> None:
         print(f"{compound}: {value:.2f}")
 
     hcv = dulong_formula(element_counts)
-    print("\nHigher Calorific Value (HCV or HHV):")
+    print("\nTheoritical Higher Calorific Value (HCV or HHV):")
     print(f"{hcv:.2f} kJ/kg\n")
+
 
 while True:
     formula = input("Enter the chemical formula (or press Enter to exit): ")

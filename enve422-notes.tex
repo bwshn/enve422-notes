@@ -6,9 +6,18 @@ bottom=2cm, bindingoffset=0.5cm]{geometry}
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{graphicx}
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pifont}
 \usepackage[onehalfspacing]{setspace}
+\usepackage[version=4]{mhchem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
 
 \title{{\Large ENVE 422}\\ {\small Treatment \& Disposal of Water \& Wastewater Sludge}}
 \author{Bekir Şahin}
@@ -98,7 +107,7 @@ Sources:
     \end{enumerate}
 \end{itemize}
 
-\begin{table}[h]
+\begin{table}[ht]
     \caption{The types of sludge, their physical concentrations and characteristics.}
     \label{tab:table_1}
     \centering
@@ -356,7 +365,7 @@ i\begin{itemize}
     anaerobic sulfur cycle originates hydrogen sulfide gas. low concentaartions, terrible smell, in high concentations H2S has a rather pleasant smell, but it is lethal.
     The olfactory threshold limit for H2S is 1.3e-3 but % add here the rest
     \item Pathogenic Microorganisms\\
-    Pathogens are always in the sludge. % add here the log reduction and percent reduction
+    Pathogens are always in the sludge. 
     \item Toxicity\\
     two questions: toxicity to what? and what is the  ultimate destination?\\
     generally wastewaater sludge consists of high quliaities of heavy metals, these are toxic to most organisms; these cannot be stabilized, since they are not biodegredable, they might be reduced to a certain level, prevention is the better option.\\
@@ -687,6 +696,199 @@ belt filter: very sensitive feed sludge, sentite to plymer type
 oressure filter: batch oepration, high capital and labor costs
 drying beds and lagoons:large area requirement, stabilizaed sludge requirement, climate effect
 \date{\begin{flushright}May 26, 2023\end{flushright}}
-7/8
+\section{Chemical Sludges}
+Originating:
+\begin{enumerate}
+    \item Water $\rightarrow$ different type of sludge (mostly alum)
+    \item Wastewater (domestic) $\rightarrow$ may be due to seasonal changes and small plants, BOD and SS removal \cmark, hard to remove P \xmark, deep ocean disposal for sludge via chemically enhanced primary treatment (CEPT) can be applied.
+    \item Wastewater (industrial) $\rightarrow$ may be completely toxic
+\end{enumerate}
+Chemical sludge properties:
+\begin{itemize}
+    \item high water quantity
+    \item hard to dewater
+    \item not reactive (except P removal sludge), which is the best part
+\end{itemize}
+Water Treatment (Alum) Sludge has:
+\begin{itemize}
+    \item 98\% moisture
+    \item BOD $\approx$ 50 mg/L
+    \item COD $\approx$ 500 - 1500 mg/L
+    \item pH $\approx$ 6
+\end{itemize}
+They are mostly treated as industrial sludges, landfilling.\\
+Properties:
+\begin{align*}
+    \textbf{Thickners} & \text{ may be used}\\
+    \textbf{Rheologically} & \text{ Newtonian fluids}\\
+    \textbf{Dewatering} & \text{ high SRF, hard to dewater}\\
+    \textbf{Conditioning} & \text{ chemical conditioning is effective, esp. if climate permits, freezing/thawing}
+\end{align*}
+SRF $\downarrow$ as solid concentration $\uparrow$\\
+Applications:\\
+\ce{Al^3+ + PO_4^3- \rightleftarrows AlPO4} $\downarrow$ insoluble ppt. (excellent removal mechanism)\\
+Sludge production formulas:\\
+\ce{Al^3+ + PO_4^3- \rightleftarrows AlPO4} $\downarrow$ ppt.\\
+\ce{Al^3+ + 3OH- \rightleftarrows Al(OH)3} $\downarrow$ ppt.\\
+Total sludge produced $\sum (1 + 2)$
+Reducing the pH (acidification) would result in \ce{Al^3+} recovery.
+Properties of \textbf{Iron Sludge}:\\
+\ce{Fe^2+}: Ferrous in \ce{FeSO4} form, \ce{Fe^3+}: Ferric in \ce{FeCl3} form (better compared to ferrous)\\
+Characteristics:
+\begin{itemize}
+    \item soft, fluffy
+    \item 10 - 12 \% achievable solid concentration
+    \item still behaves as fluid when concentrated
+\end{itemize}
+\ce{Fe^3+ + PO_4^3- \rightleftarrows FePO4} $\downarrow$\\
+\ce{Fe^3+ + 3OH- \rightleftarrows Fe(OH)3} $\downarrow$\\
+Total sludge produced $\sum (1 + 2)$\\
+\textbf{Lime Sludge:}\\
+\ce{CaO}: Quicklime, \ce{Ca(OH)2}: Slaked/hydrated lime\\
+High pH generated (= 11.5) $\rightarrow$ carbonates, phosphates, etc. will precipitate out.\\
+Phosphorus removal achieved with \ce{Ca5(OH)(PO4)3} (calcium hydroxylapatite), flocs are small; therefore, hard to dewater.\\
+\ce{CaO + H2O \rightleftarrows Ca(OH)2} (slacking reaction: sudden temperature increase, high pH, which is very effective sludge stabilization)\\
+Nice soil conditioning for acidic soils (by achieving higher water holding capacity and permeability).\\
+Disposal options for \textbf{Industrial (Toxic) Sludge}:
+\begin{enumerate}
+    \item \textbf{Deep well injection:} Way deep, two impervious/confined strata, downside: no way to reach the waste, it may come back to surface.
+     \item \textbf{Landfill:} A dedicated landfill is a must.
+     \item \textbf{Stabilization (Fixation) / Solidification:} Stabilization $\rightarrow$ reduces toxicity, Solidification $\rightarrow$ reduces mobility (ex. pozzolan + lime).
+\end{enumerate}
+\section{Sludge Drying and Combustion}
+Beneficial use, also can be considered as final destination.\\
+Thickening and dewatering do a potential job to help sludge drying, but 35\% is not enough. Thermal energy is required.\\
+\textbf{Sludge Drying:} processing solid product with high organic content.\\
+\textbf{Sludge Combustion:} converting the volatile solids into \ce{CO2} and \ce{H2O}.
+\subsection{Drying}
+\begin{tikzpicture}[node distance=1.5cm, auto]
 
+% Circle: 
+\node[circle, draw, text width=1cm, align=center] (empty) {};
+\node[right=of empty] (emptyLabel) {5\% dry material};
+
+% Rectangle: Thickening
+\node[rectangle, draw, text width=2.5cm, align=center, below of=empty] (thickening) {Thickening};
+\node[right= 0.5 cm of thickening] (thickeningLabel) {10\% dry material};
+
+% Rectangle: Dewatering
+\node[rectangle, draw, text width=3cm, align=center, below of=thickening] (dewatering) {Dewatering};
+\node[right= 0.5 cm of dewatering] (dewateringLabel) {25\% dry material};
+
+% Rectangle: Conditioning
+\node[rectangle, draw, text width=3.5cm, align=center, below of=dewatering] (conditioning) {Conditioning};
+\node[right= 0.5 cm of conditioning] (conditioningLabel) {35\% dry material if done accurately};
+
+% Rectangle: Drying
+\node[rectangle, draw, text width=3.5cm, align=center, below of=conditioning] (drying) {Drying};
+\node[right= 0.5 cm of drying] (dryingLabel) {Since 35\% is not enough for many applications, 95\% can be achieved};
+
+% Arrows
+\draw[->] (empty) -- (thickening);
+\draw[->] (thickening) -- (dewatering);
+\draw[->] (dewatering) -- (conditioning);
+\draw[->] (conditioning) -- (drying);
+\draw[->] (empty) -- (emptyLabel);
+\draw[->] (thickening) -- (thickeningLabel);
+\draw[->] (dewatering) -- (dewateringLabel);
+\draw[->] (conditioning) -- (conditioningLabel);
+\draw[->] (drying) -- (dryingLabel);
+\end{tikzpicture}
+
+Sludge Drying Stages:
+\begin{enumerate}
+    \item Warming up: Increasingly drying, short stage.
+    \item Constant Rate: The evaporation and the inside movement are in the same rate.
+    \item Falling rate: Not a fixed slope, drying rate decreases.
+\end{enumerate}
+Moisture content affects the drying rate!
+\begin{enumerate}
+    \item Free water: Constant rate
+    \item Interstitial water: First falling rate, linearly
+    \item Surface water: Second falling rate, logarithmic.
+\end{enumerate}
+\begin{itemize}
+    \item convective or direct dryers,
+    \item conductive or indirect dryers
+    \item mixed systems
+\end{itemize}
+\textbf{Direct sludge dryers:}\\
+Direct contact (\textsl{convective}) of sludge with the heating agent such as hot gases from the combustion of an external fuel, alternatively dried sludge can be contacted with the dewatered cake in the drier to evaporate the remaining water.\\
+Simpler in design. Higher temperatures, often have problems associated with dust and odors. Very intensive systems!\\
+\textbf{Indirect sludge dryers:}
+Predominantly \textsl{conductive} systems, advantages: reduced odor and dust, reduced air pollution problems, disadvantages: a little less efficient due to longer drying times.\\
+Investment and operation are costly in both cases!\\
+\textbf{Solar drying:}\\
+Almost comes to 60 - 80 \% solid content, 90\% cannot be achieved (Mallorca example). A greenhouse type of structure with air movement, mixing etc. Large area requirement, takes time, ambient moisture level and in the atmosphere is critical. They are not really cheap options due to land cost. The system is so mechanic as well.
+\subsection{Combustion/Incineration}
+\textbf{Incineration:} Full oxidation (combustion of wastes), combustion might be partial. Drying is a crucial step to provide efficiency.\\
+Sludge has organic content but also high water content. \\
+It is an expensive process (esp. in drying part).\\
+The heat value depends on the elemental composition of the sludge, this determines whether the auxiliary fuel will be needed or not.\\
+The stabilization reduces the calorific value dramatically.\\
+\textbf{Heat value of sludge:}
+\begin{itemize}
+    \item Elemental composition can be used in \textsl{Dulong's formula}.
+    \item Calorimeter measurements can be applied for an experimental approach.
+    \item Empirical formulas can also be used from the literature.
+\end{itemize}
+Even though the calorific value of sludge ($\approx$ 5500 kcal/kg) compared to coal and oil ($\approx$ 7800 kcal/kg and $\approx$ 10600 kcal/kg) looks good, the water content ($\approx$ 80\%) and non-volatile portion ($\approx$ 30\%) of the sludge should be accounted.\\
+To increase the heat value of sludge: \textsl{dewatering aids} and \textsl{co-combustion with other wastes}.
+Combustion systems:
+\begin{itemize}
+    \item Multiple Hearth Incinerator
+    \item Fluidized Bed Incinerator
+    \item Rotary Kiln Incinerator
+\end{itemize}
+\textbf{Multiple Hearth Incinerator}\\
+Horizontal shelves (hearths), dropping sludge, upper for vaporization, middle for burning, and lower for the cooling off.\\
+Air goes the other way (countercurrent).\\
+\textbf{Fluidized Bed Incinerator}\\
+Fluidizing medium (preheated sand), completely mixed with a medium. Suspension, very homogeneous, very efficient!\\
+Excess air (20\%) is needed, which means air pollution control.\\
+\textbf{Rotary Kiln Incinerator}\\
+Very high temperatures, 2 stage, with inclination the sludge moves while rotating.\\
+Two important factor:
+\begin{enumerate}
+    \item Calorific value
+    \item Moisture content
+\end{enumerate}
+If the following are provided adequately:
+\begin{enumerate}
+    \item Time,
+    \item Temperature,
+    \item Turbulence (3Ts of combustion),
+    \item Oxygen,
+    \item Constant and adequate feed.
+\end{enumerate}
+Excess air is always needed ($\approx$ 50 - 100 \%).
+\subsection{Air pollution issue}
+One problem: air pollution control, due to ash and odor problems.\\
+\textbf{Air pollution control units} are a must.
+Two major constituents:
+\begin{enumerate}
+    \item Particulates and flue gas stream
+    \item Acid gases
+\end{enumerate}
+Particulate removal:
+\begin{enumerate}
+    \item Gravity separation
+    \item Interference
+    \item Centrifugal separation
+    \item Filtration
+    \item Electrostatic separation
+    \item Wetting a particle with water and then "scrubbed" (only wet or dry system except 6)
+\end{enumerate}
+Acid gas removal (\ce{HCl} and \ce{SO2} are neutralized and salty water is handled):
+\begin{enumerate}
+    \item Dry lime injection
+    \item Dry scrubber (those are dry)
+    \item Absorption/reaction
+    \item Wetting contactors (wet options)
+\end{enumerate}
+\textbf{Alternative Thermal Treatment Technologies}\\
+\textit{Gasification}\\
+Kinda like \textit{pyrolysis} (no oxygen introduction), some oxygen input (limited): syngas (is a mixture of hydrogen and carbon monoxide, in various ratios; the gas often contains some carbon dioxide and methane), char or slag, oils and reaction water is produced.\\
+Wastewater sludge can act as a raw material or an energy source in cement kilns (moisture content is a problem).
+\date{\begin{flushright}June 1, 2023\end{flushright}}
 \end{document}

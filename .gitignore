@@ -1,6 +1,3 @@
-# Created by https://www.toptal.com/developers/gitignore/api/python,tex,R
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,tex,R
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/

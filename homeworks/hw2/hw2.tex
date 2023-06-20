@@ -30,6 +30,7 @@ style = ieee
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{multicol}
+\usepackage{xcolor}
 \addbibresource{hw2refs.bib}
 
 % Page setup
@@ -57,6 +58,9 @@ style = ieee
 \onehalfspacing
 \maketitle % Add title to document
 \thispagestyle{empty}
+\begin{center}
+    \huge \textcolor{red}{Graded: 90/100}
+\end{center}
 \newpage
 \section{}
 A mass balance for completely mixed continuous aerobic digester \autocite{metcalf2014} can be written as:
@@ -144,6 +148,7 @@ Some guidelines for details on the total area composition are illustrated in Equ
 $$\frac{120*10^3 \text{ kg/d}}{1009 \text{ kg/m}^3} = 118.93 \text{ m}^3\text{/d}$$
 \textbf{Amendment with a bulking agent (3 to 1 ratio):}
 $$118.93 \text{ m}^3\text{/d} * 4 = 475. 72 \text{ m}^3\text{/d}$$
+\textcolor{red}{$V_\text{solids}$, not $V_\text{sludge}$ (-5)}\\
 \textbf{Retention time of 90 days for composting and curing requires:}
 $$475. 72 \text{ m}^3\text{/d} * 90 \text{ days} = 42814.67 \text{ m}^3 \text{ in the facility.}$$
 \textbf{The area required (\boldmath{$2.5L$}):}
@@ -243,6 +248,7 @@ where:
 \section*{Calculations}
 Assuming v = 1.22 m/s (4 ft/s) with 4\% solid concentration yields \autocite{sanin2011}:\\
 $S = 0.04$\\
+\textcolor{red}{No need for this assumption, this can be calculated from the formula itself, then the only unknown is R (-5)}\\
 $S = h_L/L$\\
 $h_L = 0.04*6000 = 240 \text{ m head-loss experienced.}$\\
 \textbf{The total head required:}\\

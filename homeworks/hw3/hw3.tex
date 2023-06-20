@@ -31,6 +31,7 @@ style = ieee
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{xcolor}
 \pgfplotsset{compat=newest}
 \addbibresource{hw3refs.bib}
 
@@ -47,6 +48,8 @@ style = ieee
 \titlespacing{\section}{0pt}{0.25\baselineskip}{0.25\baselineskip} % Adjust spacing before and after section
 \titlespacing{\subsection}{0pt}{0.25\baselineskip}{0.25\baselineskip} % Adjust spacing before and after subsection
 
+\captionsetup{font=sl, labelsep=period, labelfont=bf}
+
 % Document information
 \title{Department of Environmental Engineering\\Middle East Technical University\\Spring 2023\\ENVE422\\Treatment and Disposal of Water \& Wastewater Sludges\\Homework 3 Submission} % Set document title
 \author{\href{sahin.bekir@metu.edu.tr}{Bekir Şahin}} % Set document author
@@ -54,6 +57,9 @@ style = ieee
 \setcounter{page}{0}
 \onehalfspacing
 \maketitle % Add title to document
+\begin{center}
+    \huge \textcolor{red}{Graded: 100/100}
+\end{center}
 \thispagestyle{empty}
 \newpage
 \section{}
@@ -76,7 +82,6 @@ $5\text{ kg/m}^3*23\text{ m/h}=115\text{ kg/m}^2\text{h}$\\
 \ldots
 \begin{table}[htbp]
 \centering
-\captionsetup{font=sl, labelsep=period, labelfont=bf}
 \caption{Tabulated values for solids-flux approach.}
 \begin{tabular}{ccc}
 \toprule
@@ -121,7 +126,6 @@ Solids Concentration Settling Velocity
 };
 \end{axis}
 \end{tikzpicture}
-\captionsetup{font=sl, labelsep=period, labelfont=bf}
 \caption{Zone settling velocities (ZSV) in different solid concentrations.}
 \label{fig:zsv}
 \end{figure}
@@ -161,7 +165,6 @@ Solids Concentration Settling Velocity
 \node[font=\footnotesize] at (axis cs:3.5,37) {\fbox{$G_L$ = 32 kg/m$^2$h}};
 \end{axis}
 \end{tikzpicture}
-\captionsetup{font=sl, labelsep=period, labelfont=bf}
 \caption{Flux values w.r.t. solid concentrations with Yoshioka construction.}
 \label{fig:yoshioka}
 \end{figure}
@@ -183,7 +186,6 @@ According to \textcite{sanin2011, metcalf2014}, two precipitation events occur w
 The following calculations are done according to the molecular weights of elements and compounds in Table \ref{tab:mws}.
 \begin{table}[htbp]
     \centering
-    \captionsetup{font=sl, labelsep=period, labelfont=bf}
     \caption{Molecular weights of elements and compounds for the calculations.}
     \begin{tabular}{cc}
     \toprule

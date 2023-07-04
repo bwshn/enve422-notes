@@ -1,2 +1,2 @@
 # enve422-notes
-Some notes from the class and some codes that might come handy while taking solving the problems in homework.
+My lecture notes from the class and some codes that might come handy while solving the problems in classwork and homework.
